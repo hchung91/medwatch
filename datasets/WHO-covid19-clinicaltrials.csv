@@ -1,0 +1,41 @@
+﻿Platform,Type of candidate vaccine,Developer,Coronavirus target,Current stage of clinical evaluation/regulatory status- Coronavirus candidate,Same platform for non-Coronavirus candidates
+Non- Replicating Viral Vector,ChAdOx1-S,University of Oxford/AstraZeneca,SARS-CoV2,"Phase 3 ISRCTN89951424
+Phase2b/3
+2020-001228-32
+Phase 1/2 PACTR202006922165132
+2020-001072-15","MERS, influenza, TB, Chikungunya, Zika, MenB, plague"
+Non- Replicating Viral Vector,Adenovirus Type 5 Vector,CanSino Biological Inc./Beijing Institute of Biotechnology,SARS-CoV2,"Phase 2 ChiCTR2000031781
+Phase 1
+ChiCTR2000030906 ",Ebola
+RNA,"LNP-
+encapsulated mRNA",Moderna/NIAID,SARS-CoV2,"Phase 2 NCT04405076
+Phase 1 NCT04283461",multiple candidates
+Inactivated,Inactivated,"Wuhan Institute of Biological
+Products/Sinopharm",SARS-CoV2,Phase 1/2 ChiCTR2000031809,
+Inactivated,Inactivated,Beijing Institute of Biological Products/Sinopharm,SARS-CoV2,Phase 1/2 ChiCTR2000032459,
+Inactivated,Inactivated + alum,Sinovac,SARS-CoV2,Phase 1/2 NCT04383574 NCT04352608,SARS
+Protein Subunit,"Full length recombinant SARS CoV-2
+glycoprotein nanoparticle vaccine adjuvanted with
+Matrix M",Novavax,SARS-CoV2,Phase 1/2 NCT04368988,"RSV; CCHF, HPV, VZV, EBOV"
+RNA,3 LNP-mRNAs,BioNTech/Fosun Pharma/Pfizer,SARS-CoV2,"Phase 1/2
+2020-001038-36
+NCT04368728",
+Inactivated,Inactivated,"Institute of Medical Biology
+, Chinese Academy of Medical Sciences",SARS-CoV2,Phase 1 NCT04412538,
+DNA,DNA plasmid vaccine with electroporation,Inovio Pharmaceuticals,SARS-CoV2,Phase 1 NCT04336410,multiple candidates
+DNA,"DNA Vaccine
+(GX-19)",Genexine Consortium,SARS-CoV2,"Phase 1
+NCT04445389",
+"Non- Replicating
+Viral Vector",Adeno-based,Gamaleya Research Institute,SARS-CoV2,"Phase 1 NCT04436471
+NCT04437875",
+Protein Subunit,Native like Trimeric subunit Spike Protein vaccine,Clover Biopharmaceuticals Inc./GSK/Dynavax,SARS-CoV2,Phase 1 NCT04405908,"HIV, REV Influenza"
+Protein Subunit,Adjuvanted recombinant protein  (RBD- Dimer),"Anhui Zhifei Longcom Biopharmaceutical/ Institute of Microbiology, Chinese Academy of
+Sciences",SARS-CoV2,Phase 1 NCT04445194,MERS
+RNA,LNP-nCoVsaRNA,Imperial College London,SARS-CoV2,"Phase 1
+ISRCTN17072692","EBOV; LASV, MARV,
+Inf (H7N9), RABV"
+RNA,mRNA,Curevac,SARS-CoV2,Phase 1 NCT04449276,"RABV, LASV, YFV; MERS, InfA, ZIKV,
+DENV, NIPV"
+RNA,mRNA,"People's Liberation Army (PLA) Academy of Military
+Sciences/Walvax Biotech.",SARS-CoV2,Phase 1 ChiCTR2000034112,
