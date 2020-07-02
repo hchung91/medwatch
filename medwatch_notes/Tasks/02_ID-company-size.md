@@ -130,7 +130,8 @@ name = df['name'][0]
 Module can be found at
 https://pypi.org/project/pandas-datareader/
 
-
+Other links:
+https://learndatasci.com/tutorials/python-finance-part-yahoo-finance-api-pandas-matplotlib/
 
 ### Get Market Cap of a list of companies
 
