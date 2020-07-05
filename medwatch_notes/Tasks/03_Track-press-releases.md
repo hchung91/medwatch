@@ -22,3 +22,12 @@ Used package which utilizes Google's API
 - If new snapshot is the same as the saved snapshot, delete and wait until next ping (may need to learn things like ignoring time, ip addresses, etc)
 - If new snapshot is different from save snapshot, find what is different and check for links/descriptions
 
+
+
+## Find differences between two webpages
+
+- Ignore the `<head></head>` element as this may have changing metadata 
+- Within differences in the body, check for an `href` 
+  - Try requesting `href` directly
+  - If bad response, append to press release base url
+  - If still bad response, append to official company base url

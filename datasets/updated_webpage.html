@@ -1,0 +1,1591 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1169.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="BioNTech" />
+<link rel="canonical" href="https://investors.biontech.de/press-releases/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.biontech.de/press-releases" />
+<meta property="og:title" content="Press Releases | BioNTech" />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about BioNTech&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb50866/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investors.biontech.de/press-releases" />
+<link rel="alternate" hreflang="de" href="https://investors.biontech.de/de/press-releases" />
+<link rel="revision" href="https://investors.biontech.de/press-releases" />
+
+    <title>Press Releases | BioNTech</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb50866/files/css/css_NRmgfE7PDqMPimvCjz666hBep0GsMON9xUAojqIOMJw.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb50866/files/css/css_2zS6SlaY-pKswK2c08e2a8dfQtdc4yQ16DXA6rcVzZA.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb50866/files/css/css_qiIL-mffQUaum559wtcfFYi_iS8OG6PzZFmrLFOhtOg.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb50866/files/css/css_LpjfjouS2Hj6VCUSI_6sa_UuQVWe63WgnA0SDBD6PWY.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Raleway:400,600,700,800,900" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb50866/files/css/css_HMLp8yBe5gFRM23NG2v5nJIcIvN8mRLPECyNGX3qC1c.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb50866/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+<script src="/sites/g/files/knoqqb50866/files/js/js_Rj1bTWLEHMa9yKpwV-VfR_i9894_ptutjA98PCo2j84.js"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5816 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="body-page">
+    <header id="header" class="header-v1">
+
+                    <div class="topbar">
+                <div class="topbar-inner">
+                    <div class="container">
+                        <div class="content">
+                            
+                        
+    <h2 class="visually-hidden">Topbar Nav</h2>
+    
+
+                
+<nav role="navigation" aria-labelledby="block-topbarmenu-menu" id="block-topbarmenu" class="topBarMenu block block-menu navigation menu--top-bar-menu">
+  <div class="block-content">
+
+                        <ul class="gva_menu">
+
+                                    <li class="menu-item menu-item--active-trail">
+                <a class="is-active" target="" href="/investors-media" title="Investors &amp; Media">Investors &amp; Media</a>
+              </li>
+                                                <li class="menu-item">
+                <a target="" href="https://biontech.de/careers" title="Careers">Careers</a>
+              </li>
+                                                <li class="menu-item">
+                <a target="" href="https://biontech.de/connect" title="Connect">Connect</a>
+              </li>
+                      
+        </ul>
+          
+
+    
+  </div>
+</nav>
+
+    
+
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        
+        <div class="header-main">
+            <div class="container header-content-layout">
+                <div class="header-main-inner p-relative">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-8 branding">
+                            
+  
+    
+      
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><p>
+	<a class="site-branding-logo" href="https://biontech.de/" rel="home" title="Home">
+		<img alt="Home" data-entity-type="file" data-entity-uuid="1837ee17-6885-4f93-a877-76ed83809177" src="/system/files-encrypted/nasdaq_kms/inline-images/logo_0.png" /></a>
+</p></div>
+      
+
+      
+  
+                                                    </div>
+                        <div class="col-md-9 col-sm-6 col-xs-4 p-static">
+                            <div class="header-inner clearfix">
+                                <div class="main-menu">
+                                    <div class="area-main-menu">
+                                        <div class="area-inner">
+                                            <div class="search-mobile-cont">
+                                                <div class="search-input-dup-cont">
+                                                    <input id="search-input-dup" class="earch-input-dup" placeholder="Search"/>
+                                                </div>
+                                            </div>
+                                            <div class="gva-offcanvas-mobile">
+                                                <div class="close-offcanvas hidden">
+                                                    <i class="gv-icon-8"></i>
+                                                </div>
+                                                <nav role="navigation" aria-labelledby="block-gavias-tico-main-menu-menu" id="block-gavias-tico-main-menu" class="block block-menu navigation menu--main">
+                                                    <h2  class="visually-hidden block-title" id="block-gavias-tico-main-menu-menu">
+                                                        <span>Main navigation</span>
+                                                    </h2>
+                                                    <div class="block-content">
+                                                        <div class="gva-navigation">
+                                                            <div class="arr-slide">
+                                                                <a href="#">&nbsp;</a>
+                                                            </div>
+
+                                                            
+                        
+    <h2 class="visually-hidden">Main navigation</h2>
+    
+
+                
+                           <ul  class="clearfix gva_menu gva_menu_main">
+                                                        <li  class="menu-item menu-item--expanded gva-mega-menu megamenu menu-grid menu-columns-4 levelOneWithChildren">
+              <a target="" href="https://biontech.de/our-dna/vision">
+                Our DNA
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="menu-item menu-item--expanded levelTwoWithChildren">
+              <a target="" href="/">
+                Our DNA - Child
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/our-dna/vision">Our vision</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/our-dna/leadership">Leadership</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/our-dna/collaborators">Collaborators</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/our-dna/services">Services</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/our-dna/locations">Our locations</a>
+            </li>
+                            </ul>
+  
+            </li>
+            <li class="cont-box-article-menu" id="cont-box-article-1"></li>
+                            </ul>
+  
+            </li>
+                                                                    <li  class="menu-item menu-item--expanded gva-mega-menu megamenu menu-grid menu-columns-4 levelOneWithChildren">
+              <a target="" href="https://biontech.de/how-we-translate/biontech-approach">
+                How we translate
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="menu-item menu-item--expanded levelTwoWithChildren">
+              <a target="" href="/">
+                How we translate - Child
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/biontech-approach">The BionTech Approach</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/mrna-therapeutics">mRNA Therapeutics</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/engineered-cell-therapies">Engineered Cell Therapies</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/antibodies">Antibodies</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/small-molecule-immunomodulators">Small Molecule Immunomodulators</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/manufacturing">Manufacturing</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/how-we-translate/intellectual-property">Intellectual property</a>
+            </li>
+                            </ul>
+  
+            </li>
+            <li class="cont-box-article-menu" id="cont-box-article-2"></li>
+                            </ul>
+  
+            </li>
+                                                                    <li  class="menu-item menu-item--expanded gva-mega-menu megamenu menu-grid menu-columns-4 levelOneWithChildren">
+              <a target="" href="https://biontech.de/science/individualized-cancer-medicine">
+                Science
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="menu-item menu-item--expanded levelTwoWithChildren">
+              <a target="" href="/">
+                Science - Child
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/science/individualized-cancer-medicine">Individualized cancer medicine</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/science/pipeline">Pipeline</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/science/platforms">Platforms</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/science/publications">Publications</a>
+            </li>
+                            </ul>
+  
+            </li>
+            <li class="cont-box-article-menu" id="cont-box-article-3"></li>
+                            </ul>
+  
+            </li>
+                                                                    <li  class="menu-item menu-item--expanded gva-mega-menu megamenu menu-grid menu-columns-4 levelOneWithChildren">
+              <a target="" href="https://biontech.de/for-patients/info-resources">
+                For patients
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="menu-item menu-item--expanded levelTwoWithChildren">
+              <a target="" href="/">
+                For patients - Child
+                <span class="icaret nav-plus fa fa-angle-down"></span>
+              </a>
+                                         <ul class="menu sub-menu">
+                                                        <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/for-patients/info-resources">Info &amp; Resources</a>
+            </li>
+                                                                    <li  class="item-child levelTwoNoChildren">
+              <a target="" href="https://biontech.de/for-patients/clinical-trials">Clinical trials</a>
+            </li>
+                            </ul>
+  
+            </li>
+            <li class="cont-box-article-menu" id="cont-box-article-4"></li>
+                            </ul>
+  
+            </li>
+                            </ul>
+  
+
+
+    
+
+                                                            
+                                                                                                                            <div class="generic-mob-menu">
+                                                                    <div class="separator-generic-mob-menu"></div>
+                                                                    
+                        
+    <h2 class="visually-hidden">Topbar Nav</h2>
+    
+
+                
+        
+          <li class="menu-mob-other">
+        <a target="" href="/investors-media">Investors &amp; Media</a>
+      </li>
+          <li class="menu-mob-other">
+        <a target="" href="https://biontech.de/careers">Careers</a>
+      </li>
+          <li class="menu-mob-other">
+        <a target="" href="https://biontech.de/connect">Connect</a>
+      </li>
+    
+  
+
+
+    
+
+                                                                                                                                    </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                        <div id="menu-bar" class="menu-bar hidden-lg hidden-md">
+                                            <span class="one"></span>
+                                            <span class="two"></span>
+                                            <span class="three"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div role="main" class="main main-page">
+        <div class="clearfix"></div>
+        <div class="help show">
+            <div class="container">
+                <div class="control-panel">
+                    <i class="fa fa-cogs"></i>
+                </div>
+                <div class="content-inner"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div id="content" class="content content-full">
+            <div>
+                <div class="content-main-inner">
+                    <div id="page-main-content" class="main-content">
+                        <div class="main-content-inner">
+                            <div class="content-main">
+                                <div>
+                                    <div id="block-gavias-tico-content--4" class="block block-system block-system-main-block no-title">
+                                        <div class="content block-content">
+                                            <div class="hero-conainer gbb-row bg-size-cover" style="background-image:url('/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/banner-ir.png'); background-repeat:no-repeat; background-position:center bottom">
+                                                <div class="bb-inner default">
+                                                    <div class="bb-container container">
+                                                        <div class="row">
+                                                            <div class="row-wrapper clearfix">
+                                                                <div class="gsc-column col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-title">
+                                                                    <div class="column-inner  bg-size-cover">
+                                                                        <div class="column-content-inner">
+                                                                            <div class="column-content h1-title">
+                                                                                <h1 class="banner-header">
+                                                                                                                                                                            Press Releases
+                                                                                                                                                                    </h1>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <article data-history-node-id="38" role="article" class="node node--type-index-news node--promoted node--view-mode-full clearfix">
+                                                <div class="node__content clearfix">
+                                                    <div class="bg-greyx ndq-5816" id="ndq-content">
+                                                        <div class="container cont-control-fixed">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 ir-content-area">
+
+                                                                                                                                            <div class="language-switcher">
+                                                                            <div class="language-switcher-language-url block--language-blocklanguage-content block--language-blocklanguage-content--5816 block--lang-switcher--language-block--language-content block--lang-switcher--language-block--language-content--5816 block--a85dfc23-f45a-46c4-b028-39d90ffdabad block--a85dfc23-f45a-46c4-b028-39d90ffdabad--5816 block block-language block-language-blocklanguage-content" id="block-languageswitchercontent" role="navigation">
+  
+    
+      <ul class=" inline-links"  data-block-uuid="a85dfc23-f45a-46c4-b028-39d90ffdabad"><li hreflang="en" data-drupal-link-system-path="node/5816" class="en inline-links__item is-active"><a href="/press-releases" class="language-link is-active" hreflang="en" data-drupal-link-system-path="node/5816">English</a></li><li hreflang="de" data-drupal-link-system-path="node/5816" class="de inline-links__item"><a href="/de/press-releases" class="language-link" hreflang="de" data-drupal-link-system-path="node/5816">German</a></li></ul>
+  </div>
+
+                                                                        </div>
+                                                                    
+                                                                                                                                            
+      <div id="block-nir-pid3469-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5816 block--content--website-notice-block block--content--website-notice-block--5816 block--f47281d2-4f1a-4c92-9f81-37b6f8578261 block--f47281d2-4f1a-4c92-9f81-37b6f8578261--5816 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid3469-content" class="block--system-main-block block--system-main-block--5816 block--content--system-main-block block--content--system-main-block--5816 block--21e6a44c-bbd1-4ffe-9f57-453eacfc3740 block--21e6a44c-bbd1-4ffe-9f57-453eacfc3740--5816 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Press Releases
+          </h1>
+    
+
+  <div>
+    
+	<div class="mb30">
+		<div class="block-region-contentmain"><div class="block--search-form block--search-form--5816 block--contentmain--search-form block--contentmain--search-form--5816 block--790c808c-22fd-47e2-8995-87170c7aa1b9 block--790c808c-22fd-47e2-8995-87170c7aa1b9--5816 block block-nir-search block-search-form">
+  
+    
+      <form data-block-uuid="790c808c-22fd-47e2-8995-87170c7aa1b9" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="Search" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="hidden" name="f[0]" value="type:nir_news" />
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+  </div>
+<div class="block--news-tbl block--nir-news__widget block--nir-news__widget--5816 block--contentmain--nir-news__widget block--contentmain--nir-news__widget--5816 block--14d5a2ff-a238-42f2-a643-56492d05b291 block--14d5a2ff-a238-42f2-a643-56492d05b291--5816 block block-nir-news block-nir-news__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/press-releases/" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container js-form-wrapper form-wrapper" data-drupal-selector="edit-a9d908dd-field-nir-news-category" id="edit-a9d908dd-field-nir-news-category"><div class="js-form-item form-item js-form-type-select form-item-a9d908dd-field-nir-news-category-value js-form-item-a9d908dd-field-nir-news-category-value">
+      <label for="edit-a9d908dd-field-nir-news-category-value">News Category</label>
+        <select class="two-col-field form-select" data-drupal-selector="edit-a9d908dd-field-nir-news-category-value" multiple="multiple" name="a9d908dd_field_nir_news_category[value][]" id="edit-a9d908dd-field-nir-news-category-value"><option value="4016">All</option><option value="3981">Clinical</option><option value="3986">Collaborators</option><option value="4001">Events</option><option value="3976">Financial</option><option value="3991">HR</option><option value="4006">Other</option><option value="3996">Science</option></select>
+        </div>
+</div>
+<div class="nir-widgets--field-container nir-widgets--field-container--yeartimezone js-form-wrapper form-wrapper" data-drupal-selector="edit-a9d908dd-year" id="edit-a9d908dd-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-a9d908dd-year-value js-form-item-a9d908dd-year-value">
+      <label for="edit-a9d908dd-year-value">Year</label>
+        <select data-drupal-selector="edit-a9d908dd-year-value" id="edit-a9d908dd-year-value" name="a9d908dd_year[value]" class="form-select"><option value="_none">None</option><option value="2020" selected="selected">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-a9d908dd-widget-id" type="hidden" name="a9d908dd_widget_id" value="a9d908dd" />
+<input autocomplete="off" data-drupal-selector="form-wdnx3e5padges-pskw3hndzdxjrcacrb5n5hqmqst54" type="hidden" name="form_build_id" value="form-wdnX3E5pADGEs_PsKw3HNDzDXjRcAcRB5n5hqMqST54" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+              <table class="nirtable collapse-table">
+          <thead>
+            <tr>
+              <th scope="col" class="views-field-field-nir-date">Date</th>
+              <th scope="col" class="views-field-field-nir-title">Title</th>
+              <th scope="col" class="views-field-field-nir-document"></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+
+<tr>
+  <td class="views-field-field-nir-date">
+    5 July 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/independence-day-phase-test-positive" class="skip-me">Independence Day Phase Test Positive</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/8019/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    1 July 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-hold-webcast-present-early-positive-data-ongoing-phase" class="skip-me">BioNTech to Hold Webcast to Present Early Positive Data from Ongoing Phase 1/2 Study of mRNA-based Vaccine Candidate Against SARS-CoV-2</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/8016/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    1 July 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/pfizer-and-biontech-announce-early-positive-data-ongoing-phase" class="skip-me">Pfizer and BioNTech Announce Early Positive Data from an Ongoing Phase 1/2 Study of mRNA-based Vaccine Candidate Against SARS-CoV-2</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/8011/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    29 June 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-raise-usd-250-million-private-placement" class="skip-me">BioNTech to Raise USD 250 Million in Private Placement</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7981/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    11 June 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/investment-plan-europe-european-investment-bank-provide-biontech" class="skip-me">Investment Plan for Europe: European Investment Bank to provide BioNTech with up to €100 million in debt financing for COVID-19 vaccine development and manufacturing</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7896/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    12 May 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-announces-first-quarter-2020-financial-results-and" class="skip-me">BioNTech Announces First Quarter 2020 Financial Results and Corporate Progress</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7561/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    6 May 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-completes-acquisition-neon-therapeutics" class="skip-me">BioNTech Completes Acquisition of Neon Therapeutics</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7551/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    5 May 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/pfizer-and-biontech-dose-first-participants-us-part-global-covid" class="skip-me">Pfizer and BioNTech Dose First Participants in the U.S. as Part of Global COVID-19 mRNA Vaccine Development Program</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7536/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    5 May 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-report-first-quarter-2020-financial-results-and" class="skip-me">BioNTech to Report First Quarter 2020 Financial Results and Operational Update on May 12, 2020</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7531/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    29 April 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-and-pfizer-announce-completion-dosing-first-cohort" class="skip-me">BioNTech and Pfizer announce completion of dosing for first cohort of Phase 1/2 trial of COVID-19 vaccine candidates in Germany</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7486/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    22 April 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-and-pfizer-announce-regulatory-approval-german" class="skip-me">BioNTech and Pfizer announce regulatory approval from German authority Paul-Ehrlich-Institut to commence first clinical trial of COVID-19 vaccine candidates</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7431/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    9 April 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/pfizer-and-biontech-announce-further-details-collaboration" class="skip-me">Pfizer and BioNTech Announce Further Details on Collaboration to Accelerate Global COVID-19 Vaccine Development</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7416/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    31 March 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-announces-full-year-2019-financial-results-and" class="skip-me">BioNTech Announces Full Year 2019 Financial Results and Corporate Update</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7356/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    23 March 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-report-full-year-financial-results-2019-and-provide" class="skip-me">BioNTech to report full year financial results for 2019  and provide corporate update on the fourth quarter  on March 31, 2020</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7346/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    17 March 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/pfizer-and-biontech-co-develop-potential-covid-19-vaccine" class="skip-me">Pfizer and BioNTech to Co-develop Potential COVID-19 Vaccine</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7321/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    16 March 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-reports-rapid-progress-covid-19-vaccine-program-address" class="skip-me">BioNTech reports rapid progress on COVID-19 vaccine program to address global public health threat</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7296/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    16 March 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-and-fosun-pharma-form-covid-19-vaccine-strategic" class="skip-me">BioNTech and Fosun Pharma form COVID-19 vaccine strategic alliance in China</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7301/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    3 February 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-announces-commencement-public-offering-american" class="skip-me">BioNTech Announces Commencement of Public Offering of American Depositary Shares</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7166/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    16 January 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-acquire-neon-strengthen-global-leadership-position-t" class="skip-me">BioNTech to acquire Neon to strengthen global leadership position in T cell therapies</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/7021/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+<tr>
+  <td class="views-field-field-nir-date">
+    13 January 2020
+  </td>
+  <td class="views-field-field-nir-title">
+    <a href="/news-releases/news-release-details/biontech-appoints-ryan-richardson-chief-strategy-officer-support" class="skip-me">BioNTech Appoints Ryan Richardson as Chief Strategy Officer to Support its Continued Global Expansion</a>
+  </td>
+  <td class="views-field-field-nir-document">
+      <div class="nir-widget--field nir-widget--news--addl-formats">
+
+                      <div class="nir-widgets-file-link">
+    <a href="/node/6991/pdf" target="_blank"><span class="file-icon widget-file--application-pdf "></span></a>
+      </div>
+
+        
+    </div>
+  
+  
+  </td>
+</tr>
+
+
+
+
+
+
+
+
+
+          </tbody>
+        </table>
+          </div>
+          </div>
+</div>
+  </div>
+
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><div class="block-nir-attribution-block">
+	<p>The press releases contained in this section of the website are provided for historical purposes only. The information contained in each press release is accurate only as of the date each press release was originally issued. BioNTech disavows any obligation to update the information contained in such press releases after the date of their issuance.</p>
+</div></div>
+      
+</div>
+      
+  </div>
+	</div>
+<!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  
+                                                                    
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 ir-side-bar">
+                                                                    
+                                                                                                                                            <div class="side-nav">
+                                                                            
+                        
+    <h2 class="visually-hidden">IR Side Nav</h2>
+    
+
+                
+                     <ul class="side-nav-menu">
+                                          <li  class="levelOneNoChildren">
+              <a target="" href="/investors-media">Overview</a>
+            </li>
+                                                        <li  class="levelOneNoChildren active active-levelOneNoChildren">
+              <a target="" href="/press-releases">Press Releases</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/events-presentations">Events &amp; Presentations</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/media-materials">Media Materials</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/corporate-governance">Corporate Governance</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/agm">Annual General Meeting</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/hv">Hauptversammlung</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/stock-information">Stock Information</a>
+            </li>
+                                                        <li  class="levelOneWithChildren has-submenu">
+              <a target="" href="/financials/overview">Financials</a>
+                                   <ul class="side-nav-submenu">
+                                          <li  class="levelTwoNoChildren">
+              <a target="" href="/financials/overview">Overview</a>
+            </li>
+                                                        <li  class="levelTwoNoChildren">
+              <a target="" href="/financials/annual-reports">Annual Reports (20-F)</a>
+            </li>
+                                                        <li  class="levelTwoNoChildren">
+              <a target="" href="/quarterly-reports">Quarterly Reports</a>
+            </li>
+                                                        <li  class="levelTwoNoChildren">
+              <a target="" href="/sec-filings">SEC Filings</a>
+            </li>
+                                                        <li  class="levelTwoNoChildren">
+              <a target="" href="/organizational-actions-form-8937">Organizational Actions Form 8937</a>
+            </li>
+                            </ul>
+  
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/analyst-coverage">Analyst Coverage</a>
+            </li>
+                                                        <li  class="levelOneNoChildren">
+              <a target="" href="/shareholder-services">Shareholder Services</a>
+            </li>
+                            </ul>
+  
+
+
+    
+
+                                                                        </div>
+                                                                                                                                        
+
+                                                                                                                                            <div class="sidebar-toolkit rounded-corners">
+                                                                            
+            
+    <h2>Toolkit</h2>
+    
+
+                
+<nav class="recent module toolkit">
+
+          
+      
+              <a target="" href="/shareholder-services/information-request">Information Requests</a>
+              <a target="" href="/events-presentations">Corporate Presentation</a>
+              <a target="" href="/shareholder-services/investor-alerts">Sign up for Email Alerts</a>
+              <a target="" href="/shareholder-services/rss-feeds">RSS Feeds</a>
+            
+
+  
+</nav>
+    
+
+                                                                        </div>
+                                                                                                                                        
+
+                                                                                                                                            <div class="sidebar-contacts rounded-corners">
+                                                                            
+  
+    
+      
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="sidebar-contact"><span class="sidebar-contact-title">Media Contact</span> <span class="sidebar-contact-text"> Jasmina Alatovic<br />
+Senior Manager Global External Communications<br /><a href="mailto:Media@biontech.de">Media@biontech.de</a><br />
++49 6131 9084-1513 </span></div>
+
+<div class="sidebar-contact"><span class="sidebar-contact-title">Investor Contact</span> <span class="sidebar-contact-text"> Sylke Maas, Ph.D.<br />
+VP Investor Relations &amp; Business Strategy<br /><a href="mailto:Investors@biontech.de">Investors@biontech.de</a><br />
++49 6131 9084-074</span></div>
+
+<div class="sidebar-contact">For U.S. Investors:<br />
+Westwicke<br />
+Victoria Meissner, M.D.<br /><a href="mailto:victoria.meissner@westwicke.com">victoria.meissner@westwicke.com</a><br />
++1 646 677-1837</div>
+
+<div class="sidebar-contact"><span class="sidebar-contact-title">Whistleblower Hotline</span> <span class="sidebar-contact-text"> BioNTech Hotline (anonymous)<br />
+Germany: 0800 000-8972<br />
+US: 844 901-0271<br />
+Other: +1 757 278-0107<br />
+Online Access to <a href="https://biontech.gan-compliance.com/caseReport">Whistle Blowing Reporting</a><br />
+Or by <a href="mailto:corporatecompliance@biontech.de">Email</a></span></div>
+</div>
+      
+
+      
+  
+                                                                        </div>
+                                                                                                                                        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="footer">
+
+                    <div class="footer-center">
+                <div class="container">
+                    <div class="row">
+                        
+  
+    
+      
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="footer-first col-lg-3 col-md-3 col-sm-12 col-xs-12 column global-block-content">
+	<div class="first-footer-block block block-block-content block-block-contentc0aa9d0c-7f31-41a2-8ffe-7a4a22c0e281 no-title" id="block-firstfooterinfo">
+		<div class="content block-content">
+			<div class="field field--name-body field--type-text-with-summary field--label-hidden field__item">
+				<div class="generic marginBott20">
+					<a href="https://biontech.de/" target="_blank" title="Biontech">
+						<img alt="Logo" class="logo-footer" data-entity-type="file" data-entity-uuid="80f17c39-69c9-4815-a1af-5fe54e34838d" src="/system/files-encrypted/nasdaq_kms/inline-images/logo-footer_0.png" /></a>
+				</div>
+
+				<p>
+					An der Goldgrube 12
+					<br />
+					55131 Mainz
+					<br />
+					Germany
+				</p>
+
+				<p> </p>
+
+				<p>
+					T: +49 6131 9084-0
+					<br />
+					F: +49 6131 9084-390
+					<br />
+					M:
+					<a href="mailto:info@biontech.de">info@biontech.de</a>
+				</p>
+				<p onclick="location.href='http://biontech.de/?ra=yes'" class="jsRestartAnimationx footerFingerPrint marginTop20">We aspire to individualize cancer medicine</p>			
+		</div>
+	</div>
+</div>
+</div></div>
+      
+
+      
+  
+                        
+    <h2 class="visually-hidden">02. Footer Column2 Links</h2>
+    
+
+                
+<div class="footer-second col-lg-3 col-md-3 col-sm-12 col-xs-6 column">
+  <nav role="navigation" aria-labelledby="block-footermain-menu" id="block-footermain" class="block block-menu navigation menu--footer-main">
+    <div class="block-content">
+
+                                <ul class="gva_menu">
+
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/our-dna/vision">Our DNA</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/how-we-translate/biontech-approach">How We Translate</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/science/individualized-cancer-medicine">Science</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/for-patients/info-resources">For Patients</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="/investors-media">Investors &amp; Media</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/careers">Careers</a>
+              </li>
+            
+          </ul>
+              
+
+      
+    </div>
+  </nav>
+</div>
+    
+
+                        
+    <h2 class="visually-hidden">03. Footer Column3 Links</h2>
+    
+
+                
+<div class="footer-third col-lg-3 col-md-3 col-sm-12 col-xs-6 column">
+  <nav role="navigation" aria-labelledby="block-gavias-tico-footer-menu" id="block-gavias-tico-footer" class="block block-menu navigation menu--footer">
+    <div class="block-content">
+
+                                <ul class="gva_menu">
+
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/connect">Connect</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/imprint">Imprint</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/terms-of-use">Terms of use</a>
+              </li>
+                          <li class="menu-item">
+                <a target="" href="https://biontech.de/data-privacy-policy">Data privacy policy</a>
+              </li>
+            
+          </ul>
+              
+
+      
+    </div>
+  </nav>
+</div>
+    
+
+  
+    
+      
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="footer-four col-lg-3 col-md-3 col-sm-12 col-xs-12 column global-block-content">
+        <div id="block-socialblockfooter" class="social-block-footer block block-block-content block-block-content63672dd0-c676-4d97-9559-ef493a438fbe no-title">
+            <div class="content block-content">
+                <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item">
+                    <div class="generic">
+                        <p>Follow us</p>
+                        <p>
+                            <a class="fb" href="https://www.linkedin.com/company/biontech-se" target="_blank" title="Facebook"><i class="fa fa-linkedin"><span style="display: none;"> </span></i></a>
+                            <a class="twi" href="https://twitter.com/BioNTech_Group" target="_blank" title="Twitter"><i class="fab fa-twitter"><span style="display: none;"> </span></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div></div>
+      
+
+      
+  
+                                                                                                                    </div>
+                </div>
+            </div>
+        
+                    <div class="copyright">
+                <div class="container">
+                    <div class="copyright-inner">
+                        <div>
+                            <div id="block-gavias-tico-powered" role="complementary" class="block block-system block-system-powered-by-block no-title">
+                                <div class="content block-content">
+                                    
+  
+    
+      
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><span>© Copyright BioNTech SE <script>
+<!--//--><![CDATA[// ><!--
+document.write((new Date()).getFullYear());
+//--><!]]>
+</script>. All Rights Reserved.</span></div>
+      
+
+      
+  
+                                                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </footer>
+    <a href='#top' class='scroll scroll-top'>&nbsp;</a>
+
+    <div style="display: none">
+        <div>
+            <div class="views-element-container block block-views block-views-blocklist-post-menu-block-1 no-title" id="block-views-block-list-post-menu-block-1">
+                <div class="content block-content">
+                    <div>
+                        <div class="js-view-dom-id-bca57ddebb15c8b3f6bae044517079a922a4c7e780974af89056879438b047e6">
+                            <div class="view-content-wrap">
+                                <div class="box-article-1 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/our-dna/vision'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Vision.jpg" alt="Our Vision" typeof="Image" />
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Our vision: individualize cancer medicine</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-1 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="/our-dna/leadership" href='https://biontech.de/create-article-42'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_Meet-our-Leadership-Team.jpg" alt="Leadership" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Meet our leadership team</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-1 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/our-dna/collaborators'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Collaborators_0.jpg" alt="Collaborators" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Get to know our partners</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-1 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/our-dna/locations'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_Learn_About_our_Services.jpg" alt="Our Locations" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Learn about our services</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="views-element-container block block-views block-views-blocklist-post-menu-block-2 no-title" id="block-views-block-list-post-menu-block-2">
+                <div class="content block-content">
+                    <div>
+                        <div class="js-view-dom-id-130f7e89c1375ca77d5e92143bcfb8d900c469a21b19282f4a55b7a1a1fc6693">
+                            <div class="view-content-wrap">
+                                <div class="box-article-2 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/how-we-translate/biontech-approach'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_The-BioNTech-approach.jpg" alt="The BioNTech approach" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">How we approach individualized cancer medicine</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-2 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/how-we-translate/mrna-therapeutics'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_mRNA-Therapeutics.jpg" alt="mRNA Therapeutics" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Why mRNA represents a disruptive new drug class</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-2 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/how-we-translate/antibodies'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Antibodies.jpg" alt="Antibodies" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">
+                                                            Beyond mRNA: Expanding therapeutics with our antibody discovery engines
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-2 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/how-we-translate/manufacturing'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Manufacturing.jpg" alt="Manufacturing" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Manufacturing our own therapeutics</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="views-element-container block block-views block-views-blocklist-post-menu-block-3 no-title" id="block-views-block-list-post-menu-block-3">
+                <div class="content block-content">
+                    <div>
+                        <div class="js-view-dom-id-156f751b27e2443c53e6afdca3e8cbd84d97f58c15e347d8c5533fa5c216d64e">
+                            <div class="view-content-wrap">
+                                <div class="box-article-3 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="/science/pipeline" href='https://biontech.de/node/125'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Pipeline.jpg" alt="Pipeline" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Explore our individualized immunotherapy pipeline</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-3 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/science/platforms'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Platforms.jpg" alt="Platforms" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">
+                                                            Tour our platforms that produce individually-tailored therapeutics
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-3 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/science/publications'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Publications.jpg" alt="Publications" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Browse our research publications</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="views-element-container block block-views block-views-blocklist-post-menu-block-4 no-title" id="block-views-block-list-post-menu-block-4">
+                <div class="content block-content">
+                    <div>
+                        <div class="js-view-dom-id-e42610d125b785c3ecab38b0085aafa2ba4aeb84f545704054cddb819828524c">
+                            <div class="view-content-wrap">
+                                <div class="box-article-4 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/for-patients/info-resources'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Patient-Info-Resources.jpg" alt="Info &amp; Resources" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">
+                                                            Our Mission: broaden the therapeutic universe to benefit patients
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-article-4 box-article item">
+                                    <div class="views-field views-field-view-node-1">
+                                        <span class="field-content">
+                                            <a urldocument="" urlextern="" href='https://biontech.de/for-patients/clinical-trials'>
+                                                <div class="post-block">
+                                                    <div class="post-image">
+                                                        <img src="/sites/g/files/knoqqb50866/themes/site/nir_pid3469/client/images/THUMB_internal_Clinical-Trials.jpg" alt="Clinical trials" typeof="Image" />    
+                                                    </div>
+                                                    <div class="post-content text-left">
+                                                        <div class="post-title">Clinical trials currently ongoing</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgbiontechse";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5816","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb50866\/themes\/site\/nir_pid3469"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"core\/drupal.collapse,core\/html5shiv,nir_base\/adobe_omniture,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.filterform,nir_multimedia\/nir_multimedia,nir_pid3469\/client-footer,nir_pid3469\/client-header,nir_pid3469\/override,nir_pid3469\/vendor,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid3469","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"fe519247fa47c1457dd915fb9b8babdd1576f517aa658cc0a7a481d4c35737b1"}}</script>
+<script src="/sites/g/files/knoqqb50866/files/js/js_xOIkO3CURy265jcW2FDWV5wmqgOJa-SoRzRCdU3JAeU.js"></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGl2ChNQaXZXQg5sd19HWCcUXFlUXUJODkNVW1EAE2VZUVtVC19dVFBHIw5HWHFbRApfXw==","queueTime":0,"applicationTime":909,"atts":"ShJUF18aSEg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
