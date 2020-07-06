@@ -1,0 +1,4645 @@
+
+
+<!doctype html>
+<!--[if IE 9]> <html lang="en-GB" class="no-js ie-9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en-GB" class="no-js">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"de4d5b2b97","applicationID":"435874581","transactionName":"NFEHbRMFXERTVEdbCg0bKG8iS35eQUNaXAIiRhFQAghXRHFYXUYXDFgJXBNLfl5BQ1pcAiJGEVACCFdE","queueTime":0,"applicationTime":173,"agent":"","atts":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"de4d5b2b97",applicationID:"435874581"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1169.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="/assets/img/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="/assets/img/favicons/favicon-128.png" sizes="128x128" />
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/img/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/img/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/img/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/img/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/img/favicons/apple-touch-icon-152x152.png" />
+
+	
+	
+
+	
+	    <meta property="og:title" content="Press releases | GSK " />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.gsk.com/en-gb/media/press-releases/" />
+        <meta name="description" content="Keep up to date with our news and recent announcements" />
+        <meta property="og:description" content="Keep up to date with our news and recent announcements" />
+        <meta name="og:image" content="https://www.gsk.com/media/3327/gsk-house-view.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=600&amp;height=315&amp;rnd=131421006070000000" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content=@gsk>
+    <meta name="twitter:title" content="Press releases | GSK">
+        <meta name="twitter:description" content="Keep up to date with our news and recent announcements">
+        <meta name="twitter:image" content="https://www.gsk.com/media/3327/gsk-house-view.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=600&amp;height=315&amp;rnd=131421006070000000">
+
+
+	
+	        <meta name="page-image" content="https://www.gsk.com/media/3327/gsk-house-view.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=600&amp;height=315&amp;rnd=131421006070000000" />
+    <meta name="site-section" content="Press releases" />
+
+
+	
+	
+
+	
+	
+    <!-- Google Tag Manager -->
+    <script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window, document, 'script', 'dataLayer', 'GTM-NBX3MQ');</script>
+    <!-- End Google Tag Manager -->
+
+
+	
+	
+
+
+
+	<link rel="stylesheet" href="/assets/css/styles.css?v=1">
+
+	
+	        <script src="//nexus.ensighten.com/gsk/corp/Bootstrap.js"></script>
+
+
+	
+	    <link rel="stylesheet" href="/css/optional_style.css" />
+
+
+	
+	    <title>Press releases | GSK </title>
+
+
+	
+	
+    <link rel="canonical" href="https://www.gsk.com/en-gb/media/press-releases/" />
+
+
+</head>
+
+<body class="" itemscope itemtype="http://schema.org/WebPage">
+	
+
+
+	
+	
+	
+
+	
+	
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBX3MQ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+
+	<div class="site-container">
+
+		<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+
+			<div class="gsk-logo">
+				<a href="/en-gb/" class="gsk-logo__link">
+					<span class="gsk-logo__text">GSK logo linking to the homepage</span>
+				</a>
+			</div>
+
+			
+			
+	<nav class="secondary-nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+
+
+			<a href="/en-gb/behind-the-science/" itemprop="url" class="secondary-nav__bts">
+
+				<span class="banner-hidden-trigger banner-hidden-trigger--mobile">
+					<div id="icon-dna--mobile"></div>
+					<strong>Behind the science</strong>
+				</span>
+
+					<span class="banner-hidden">
+						<span class="banner__content">
+							Explore innovations in medicines, vaccines and consumer healthcare from inside and outside our labs 
+							<svg class="icon-mini-chevron"><use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+						</span>
+					</span>
+
+				<span class="banner-hidden-trigger banner-hidden-trigger--desktop">
+
+					<div id="icon-dna--desktop">
+
+						<video width="20" height="32" autoplay loop muted>
+							<source src="/assets/img/GSK_DNA_Icon_64x40.mp4" type="video/mp4">
+						</video>
+
+					</div>
+
+					<strong class="banner__label">
+						Behind the science
+					</strong>
+
+				</span>
+
+				<div class="banner-hidden-trigger-bg"></div>
+
+			</a>
+
+		<a href="" itemprop="url" class="secondary-nav__wwo">
+			<svg class="icon-globe"><use xlink:href="/assets/img/icon-sprite.svg#icon-globe"></use></svg>
+			<strong>Where we operate</strong>
+		</a>
+
+		
+		
+
+		
+			<div class="secondary-nav__locations">
+
+		<a href="" 
+		   title="Market selector" 
+		   class="secondary-nav__locations-link">
+
+				<svg class="icon-globe">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-globe"/>
+				</svg>
+
+			<span class="secondary-nav__locations-title">
+				Global website
+			</span>
+
+			<svg class="icon-mini-chevron">
+				<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+			</svg>
+
+		</a>
+
+	</div>
+
+
+			<a href="/en-gb/contact-us/" class="secondary-nav__contact-link" itemprop="url">
+				<svg class="icon-phone">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-phone"/>
+				</svg>
+				<span class="secondary-nav__link-label">Contact us</span>
+			</a>
+
+			<a href="/en-gb/search/" class="secondary-nav__search-link">
+				<svg class="icon-search">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-search"/>
+				</svg>
+				<span class="secondary-nav__link-label">Search</span>
+			</a>
+
+		<a href="" class="secondary-nav__mobile-menu-link">
+
+			Menu
+
+			<span class="secondary-nav__mobile-icon-wrapper">
+				<span class="secondary-nav__mobile-icon"></span>
+			</span>
+
+		</a>
+
+	</nav>
+			<form action="/en-gb/search/" class="header-search" id="header-search">
+
+				<svg class="icon-search">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-search"/>
+				</svg>
+
+				<input type="search" class="header-search__input js-auto-complete" title="Search" placeholder="Enter a search term..." name="q">
+
+				<a href="" class="header-search__close" aria-label="Close">
+					<svg class="icon-close">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+					</svg>
+				</a>
+
+			</form>
+
+
+			
+				<nav class="primary-nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+
+		<ul class="primary-nav__container">
+
+					<li class=" ">
+
+						<a href="/en-gb/about-us/" itemprop="url" class="primary-nav__link">
+
+							About us
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													About us
+												</span>
+
+												<p>
+													We are a science-led global healthcare company with a special purpose: to help people do more, feel better, live longer.
+												</p>
+
+												<p>
+													<a href="/en-gb/about-us/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														About us
+													</span>
+
+													<a href="/en-gb/about-us/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/pharmaceuticals/">
+
+															<span>
+																Pharmaceuticals
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/vaccines/">
+
+															<span>
+																Vaccines
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/consumer-healthcare/">
+
+															<span>
+																Consumer Healthcare
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/corporate-executive-team/">
+
+															<span>
+																Corporate Executive Team
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/board-of-directors/">
+
+															<span>
+																Board of Directors
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/our-history/">
+
+															<span>
+																Our history
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Our history
+																		</span>
+
+																		<a href="/en-gb/about-us/our-history/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/about-us/our-history/innovative-entrepreneurs-1715-1891/" itemprop="url">
+																					Innovative entrepreneurs: 1715 – 1891
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/our-history/going-global-1892-1918/" itemprop="url">
+																					Going global: 1892 – 1918
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/our-history/building-brands-1919-1949/" itemprop="url">
+																					Building brands: 1919 – 1949
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/our-history/creating-the-gsk-of-today-1950-1999/" itemprop="url">
+																					Creating the GSK of today: 1950 – 1999
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/our-history/gsk-today-2000-present/" itemprop="url">
+																					GSK today: 2000 –  present
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/our-history/gsk-heritage-archives/" itemprop="url">
+																					GSK heritage archives
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/governance/">
+
+															<span>
+																Governance
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Governance
+																		</span>
+
+																		<a href="/en-gb/about-us/governance/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/about-us/governance/board-committees/" itemprop="url">
+																					Board Committees
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/governance/other-committees/" itemprop="url">
+																					Other committees
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/governance/shareholders/" itemprop="url">
+																					Shareholders
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/governance/sarbanes-oxley-act-2002/" itemprop="url">
+																					Sarbanes-Oxley Act 2002
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/governance/global-compliance/" itemprop="url">
+																					Global Ethics and Compliance
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/policies-codes-and-standards/">
+
+															<span>
+																Policies, codes and standards
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/key-facts/">
+
+															<span>
+																Key facts
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/comic-relief-partnership/">
+
+															<span>
+																Comic Relief partnership
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Comic Relief partnership
+																		</span>
+
+																		<a href="/en-gb/about-us/comic-relief-partnership/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/sierra-leone/" itemprop="url">
+																					Sierra Leone
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/ghana/" itemprop="url">
+																					Ghana
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/mozambique/" itemprop="url">
+																					Mozambique
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/tanzania/" itemprop="url">
+																					Tanzania
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/greater-mekong-subregion/" itemprop="url">
+																					Greater Mekong Subregion
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/johari-mother-of-four/" itemprop="url">
+																					Johari, mother of four
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/leonard-father-farmer-and-assistant/" itemprop="url">
+																					Leonard, father, farmer and assistant
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/nsaje-teacher/" itemprop="url">
+																					Nsaje, teacher
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/johari-mother-of-two/" itemprop="url">
+																					Johari, mother of two
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/jacob-tanzania-communication-and-development-centre/" itemprop="url">
+																					Jacob, Tanzania Communication and Development Centre
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/patrick-malaria-patient/" itemprop="url">
+																					Patrick, malaria patient
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/comic-relief-partnership/the-race-against-malaria-handing-the-baton-to-the-next-generation/" itemprop="url">
+																					The race against malaria: handing the baton to the next generation
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/save-the-children-partnership/">
+
+															<span>
+																Save the Children partnership
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Save the Children partnership
+																		</span>
+
+																		<a href="/en-gb/about-us/save-the-children-partnership/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/overview/" itemprop="url">
+																					Overview
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/meet-the-children/" itemprop="url">
+																					Meet the children
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/trek-for-kids/" itemprop="url">
+																					Trek for Kids
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/meet-baby-mckline-a-special-delivery-from-our-save-the-children-partnership/" itemprop="url">
+																					Meet Baby Mckline: a special delivery
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/the-app-that-could-save-lives/" itemprop="url">
+																					The app that could save lives
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/a-new-response-to-humanitarian-crises/" itemprop="url">
+																					A new response to humanitarian crises
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/about-us/save-the-children-partnership/giving-mothers-and-babies-a-healthier-start/" itemprop="url">
+																					Giving mothers and babies a healthier start
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/about-us/smile-train-partnership/">
+
+															<span>
+																Smile Train partnership
+															</span>
+
+
+														</a>
+
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+			<a href="/en-gb/about-us/">
+
+
+				About us
+
+				<svg class="icon-mini-chevron">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+				</svg>
+
+					<p>
+						We are a science-led global healthcare company with a special purpose: to help people do more, feel better, live longer.
+					</p>
+
+			</a>
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+					<li class=" ">
+
+						<a href="/en-gb/products/" itemprop="url" class="primary-nav__link">
+
+							Products
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													Products
+												</span>
+
+												<p>
+													We research and develop a broad range of innovative products in three primary areas of Pharmaceuticals, Vaccines and Consumer Healthcare
+												</p>
+
+												<p>
+													<a href="/en-gb/products/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														Products
+													</span>
+
+													<a href="/en-gb/products/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/products/our-prescription-medicines/">
+
+															<span>
+																Our prescription medicines
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/products/our-vaccines/">
+
+															<span>
+																Our vaccines
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/products/our-consumer-healthcare-products/">
+
+															<span>
+																Our consumer healthcare products
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/products/viiv-healthcare/">
+
+															<span>
+																ViiV Healthcare
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/products/stiefel-dermatology/">
+
+															<span>
+																Stiefel dermatology
+															</span>
+
+
+														</a>
+
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+			<a href="/en-gb/products/our-consumer-healthcare-products/">
+
+					<img src="/media/4664/consumer-healthcare-banner.jpg?center=0.48571428571428571,0.36166666666666669&amp;mode=crop&amp;quality=90&amp;width=307&amp;height=173&amp;rnd=131636805780000000" alt=""/>
+
+				Our consumer healthcare products
+
+				<svg class="icon-mini-chevron">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+				</svg>
+
+					<p>
+						When you experience discomforts like sensitive teeth, colds and flu or joint pain, our everyday healthcare products are here to help you enjoy life to the full again.
+					</p>
+
+			</a>
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+					<li class=" ">
+
+						<a href="/en-gb/careers/" itemprop="url" class="primary-nav__link">
+
+							Careers
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													Careers
+												</span>
+
+												<p>
+													We are a  global company delivering billions of healthcare products a year. Choose your path.
+												</p>
+
+												<p>
+													<a href="/en-gb/careers/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														Careers
+													</span>
+
+													<a href="/en-gb/careers/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/search-jobs/">
+
+															<span>
+																Search jobs
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/covid-19/">
+
+															<span>
+																COVID-19
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/experienced-professionals/">
+
+															<span>
+																Experienced professionals
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Experienced professionals
+																		</span>
+
+																		<a href="/en-gb/careers/experienced-professionals/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/careers/experienced-professionals/business-operations/" itemprop="url">
+																					Business operations
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/experienced-professionals/engineering/" itemprop="url">
+																					Engineering
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/experienced-professionals/manufacturing-and-supply/" itemprop="url">
+																					Manufacturing and supply
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/experienced-professionals/marketing-and-communications/" itemprop="url">
+																					Marketing and communications
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/experienced-professionals/research-and-development/" itemprop="url">
+																					Research and development 
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/experienced-professionals/sales/" itemprop="url">
+																					Sales
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/physicians/">
+
+															<span>
+																Physicians
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/apprentices-students-and-graduates/">
+
+															<span>
+																Apprentices, students and graduates
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Apprentices, students and graduates
+																		</span>
+
+																		<a href="/en-gb/careers/apprentices-students-and-graduates/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/careers/apprentices-students-and-graduates/school-students-what-next/" itemprop="url">
+																					School students - what next
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/apprentices-students-and-graduates/apprentice-programmes/" itemprop="url">
+																					Apprentice programmes
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/apprentices-students-and-graduates/work-experience-placements-and-internships/" itemprop="url">
+																					Work experience, placements and internships
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/apprentices-students-and-graduates/future-leaders-graduate-programme/" itemprop="url">
+																					Future Leaders graduate programme
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/apprentices-students-and-graduates/direct-entry/" itemprop="url">
+																					Direct entry
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/postgraduate-opportunities/">
+
+															<span>
+																Postgraduate opportunities
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Postgraduate opportunities
+																		</span>
+
+																		<a href="/en-gb/careers/postgraduate-opportunities/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/esprit-commercial-pharmaceuticals/" itemprop="url">
+																					Esprit commercial (Pharmaceuticals) 
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/esprit-commercial-consumer-healthcare/" itemprop="url">
+																					Esprit commercial (Consumer Healthcare) 
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/esprit-finance/" itemprop="url">
+																					Esprit finance 
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/mba-internships/" itemprop="url">
+																					MBA internships
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/rd-esprit-programme/" itemprop="url">
+																					Esprit R&amp;D development programme
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/postdoctoral-rd/" itemprop="url">
+																					Postdoctoral R&amp;D
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/careers/postgraduate-opportunities/postdoctoral-immunology-catalyst/" itemprop="url">
+																					Postdoctoral Immunology Catalyst 
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/meet-our-people/">
+
+															<span>
+																Meet our people
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/culture-and-values/">
+
+															<span>
+																Culture and values
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/career-benefits/">
+
+															<span>
+																Career benefits
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/tips-for-applying/">
+
+															<span>
+																Tips for applying
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/careers/warning-against-fraudulent-internet-recruitment-activities/">
+
+															<span>
+																Warning against fraudulent internet recruitment activities
+															</span>
+
+
+														</a>
+
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+			<a href="/en-gb/careers/meet-our-people/">
+
+
+				Meet our people
+
+				<svg class="icon-mini-chevron">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+				</svg>
+
+					<p>
+						Meet some of our employees from various roles, and find out what they really think about working life with us.
+					</p>
+
+			</a>
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+					<li class=" ">
+
+						<a href="/en-gb/investors/" itemprop="url" class="primary-nav__link">
+
+							Investors
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													Investors
+												</span>
+
+												<p>
+													Information and tools for investors including share and dividend information, share price analysis, latest news and corporate reporting
+												</p>
+
+												<p>
+													<a href="/en-gb/investors/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														Investors
+													</span>
+
+													<a href="/en-gb/investors/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/shareholder-information/">
+
+															<span>
+																Shareholder information
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Shareholder information
+																		</span>
+
+																		<a href="/en-gb/investors/shareholder-information/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/dividend-calculator-gbp/" itemprop="url">
+																					Dividend calculator (GBP)
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/dividend-calculator-usd/" itemprop="url">
+																					Dividend calculator (USD)
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/dividend-calendar/" itemprop="url">
+																					Dividend calendar
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/manage-your-shares/" itemprop="url">
+																					Manage your shares
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/annual-general-meeting/" itemprop="url">
+																					Annual General Meeting
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/general-meeting/" itemprop="url">
+																					General Meeting
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/corporate-sponsored-nominee-service/" itemprop="url">
+																					Corporate sponsored nominee service
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/asset-reunification-prosearch/" itemprop="url">
+																					Asset Reunification – ProSearch
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/faqs/" itemprop="url">
+																					FAQs
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/share-scam-alert/" itemprop="url">
+																					Share scam alert
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/annual-governance-meeting/" itemprop="url">
+																					Annual Governance Meeting
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/shareholder-information/shareholder-privacy-notice/" itemprop="url">
+																					Privacy Notice for Ordinary shareholders
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/quarterly-results/">
+
+															<span>
+																Quarterly results
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/corporate-reporting/">
+
+															<span>
+																Corporate reporting
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Corporate reporting
+																		</span>
+
+																		<a href="/en-gb/investors/corporate-reporting/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/investors/corporate-reporting/annual-report-2019/" itemprop="url">
+																					Annual Report 2019
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/corporate-reporting/corporate-reporting-archive/" itemprop="url">
+																					Corporate reporting archive
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/share-price-analysis/">
+
+															<span>
+																Share price analysis
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Share price analysis
+																		</span>
+
+																		<a href="/en-gb/investors/share-price-analysis/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/investors/share-price-analysis/gsk-share-price/" itemprop="url">
+																					GSK share price
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/share-price-analysis/share-price-calculator-gbp/" itemprop="url">
+																					Share price calculator (GBP)
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/share-price-analysis/share-price-calculator-usd/" itemprop="url">
+																					Share price calculator (USD)
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/financial-calendar/">
+
+															<span>
+																Financial calendar
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/analyst-consensus/">
+
+															<span>
+																Analyst consensus
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/debt-investors/">
+
+															<span>
+																Debt investors
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/stock-exchange-announcements/">
+
+															<span>
+																Stock exchange announcements
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Stock exchange announcements
+																		</span>
+
+																		<a href="/en-gb/investors/stock-exchange-announcements/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/investors/stock-exchange-announcements/london-rns/" itemprop="url">
+																					London (RNS)
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/stock-exchange-announcements/london-rns-inside-information/" itemprop="url">
+																					London (RNS) inside information
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/stock-exchange-announcements/new-york-sec/" itemprop="url">
+																					New York (SEC)
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/investors/stock-exchange-announcements/sign-up-for-announcements/" itemprop="url">
+																					Sign up for announcements
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/about-gsk/">
+
+															<span>
+																About GSK
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/speeches-presentations/">
+
+															<span>
+																Speeches &amp; presentations
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/investors-contact-details/">
+
+															<span>
+																Investors contact details
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/agreement-to-acquire-tesaro/">
+
+															<span>
+																Agreement to acquire TESARO
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/investors/consumer-healthcare-joint-venture/">
+
+															<span>
+																Consumer Healthcare Joint Venture
+															</span>
+
+
+														</a>
+
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+			<a href="/en-gb/investors/quarterly-results/">
+
+					<img src="/media/5596/iain-mackay-38-edit-4.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=307&amp;height=173&amp;rnd=132049166440000000" alt="Iain Mackay"/>
+
+				Quarterly results
+
+				<svg class="icon-mini-chevron">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+				</svg>
+
+					<p>
+						Discover our latest financial performance announcement and search for historical quarterly results materials
+					</p>
+
+			</a>
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+					<li class="primary-nav--active primary-nav__drop-down--open">
+
+						<a href="/en-gb/media/" itemprop="url" class="primary-nav__link">
+
+							Media
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													Media
+												</span>
+
+												<p>
+													Explore the latest news, different ways to stay in touch and available useful resources
+												</p>
+
+												<p>
+													<a href="/en-gb/media/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														Media
+													</span>
+
+													<a href="/en-gb/media/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item primary-nav__drop-down-links--active primary-nav__drop-down--open">
+
+														<a href="/en-gb/media/press-releases/">
+
+															<span>
+																Press releases
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/media/resource-centre/">
+
+															<span>
+																Resource centre
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Resource centre
+																		</span>
+
+																		<a href="/en-gb/media/resource-centre/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/media/resource-centre/our-approach-to-brexit/" itemprop="url">
+																					Our approach to Brexit
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/media/resource-centre/pharmaceuticals-resources/" itemprop="url">
+																					Pharmaceuticals resources
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/media/resource-centre/our-contribution-to-the-fight-against-2019-ncov/" itemprop="url">
+																					GSK actions to support the global response to COVID-19 
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/media/social-media/">
+
+															<span>
+																Social media
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Social media
+																		</span>
+
+																		<a href="/en-gb/media/social-media/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/media/social-media/facebook/" itemprop="url">
+																					Facebook
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/media/rss-feeds/">
+
+															<span>
+																RSS feeds
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/media/image-and-video-library/">
+
+															<span>
+																Image and video library
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/media/media-contact-details/">
+
+															<span>
+																Media contact details
+															</span>
+
+
+														</a>
+
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+			<a href="/en-gb/media/press-releases/">
+
+					<img src="/media/3327/gsk-house-view.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=307&amp;height=173&amp;rnd=131421006070000000" alt="Employees walking across a bridge at GSK House, UK"/>
+
+				Press releases
+
+				<svg class="icon-mini-chevron">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+				</svg>
+
+					<p>
+						Keep up to date with our news and recent announcements
+					</p>
+
+			</a>
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+					<li class=" ">
+
+						<a href="/en-gb/research-and-development/" itemprop="url" class="primary-nav__link">
+
+							Research and development
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													Research and development
+												</span>
+
+												<p>
+													Science can improve health and well-being in so many ways, from the development of everyday healthcare products to medicines and vaccines.
+												</p>
+
+												<p>
+													<a href="/en-gb/research-and-development/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														Research and development
+													</span>
+
+													<a href="/en-gb/research-and-development/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/our-approach-to-rd/">
+
+															<span>
+																Our approach to R&amp;D
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/our-pipeline/">
+
+															<span>
+																Our pipeline
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/research/">
+
+															<span>
+																Research
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Research
+																		</span>
+
+																		<a href="/en-gb/research-and-development/research/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/research/how-we-research-new-medicines/" itemprop="url">
+																					How we research new medicines
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/research/how-we-research-new-vaccines/" itemprop="url">
+																					How we research new vaccines
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/development/">
+
+															<span>
+																Development
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Development
+																		</span>
+
+																		<a href="/en-gb/research-and-development/development/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/development/our-focus-areas/" itemprop="url">
+																					Our focus areas
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/development/how-we-develop-new-medicines/" itemprop="url">
+																					How we develop new medicines
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/development/how-we-develop-new-vaccines/" itemprop="url">
+																					How we develop new vaccines
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/partnerships/">
+
+															<span>
+																Partnerships
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Partnerships
+																		</span>
+
+																		<a href="/en-gb/research-and-development/partnerships/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/our-areas-of-interest/" itemprop="url">
+																					Our areas of interest
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/our-approach-to-partnering/" itemprop="url">
+																					Our approach to partnering
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/supported-studies/" itemprop="url">
+																					Supported studies
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/business-development/" itemprop="url">
+																					Business development
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/academic-collaborations/" itemprop="url">
+																					Academic collaborations
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/venture-funds/" itemprop="url">
+																					Venture funds
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/partnerships/contact-us-submit-an-idea/" itemprop="url">
+																					Contact us/submit an idea
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/trials-in-people/">
+
+															<span>
+																Trials in people
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Trials in people
+																		</span>
+
+																		<a href="/en-gb/research-and-development/trials-in-people/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/trials-in-people/gsk-study-register-and-patient-level-data/" itemprop="url">
+																					GSK Study Register and patient level data
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/trials-in-people/clinical-trial-phases/" itemprop="url">
+																					Clinical trial phases
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/trials-in-people/become-a-clinical-research-volunteer/" itemprop="url">
+																					Become a clinical research volunteer
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/trials-in-people/data-transparency/" itemprop="url">
+																					Data transparency
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/trials-in-people/compassionate-use-expanded-access/" itemprop="url">
+																					Compassionate use (Expanded access)
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/our-use-of-animals/">
+
+															<span>
+																Our use of animals
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Our use of animals
+																		</span>
+
+																		<a href="/en-gb/research-and-development/our-use-of-animals/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/our-use-of-animals/the-3rs-in-medicine-research/" itemprop="url">
+																					The 3Rs in medicine research
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/our-use-of-animals/use-of-non-human-primates/" itemprop="url">
+																					Use of non-human primates
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/research-and-development/our-use-of-animals/frequently-asked-questions/" itemprop="url">
+																					Frequently asked questions
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/consumer-healthcare-research/">
+
+															<span>
+																Consumer Healthcare research
+															</span>
+
+
+														</a>
+
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/research-and-development/rd-locations/">
+
+															<span>
+																R&amp;D locations
+															</span>
+
+
+														</a>
+
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+					<li class=" ">
+
+						<a href="/en-gb/responsibility/" itemprop="url" class="primary-nav__link">
+
+							Responsibility
+
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+								</svg>
+						</a>
+
+							<div class="primary-nav__drop-down">
+
+								<div class="primary-nav__drop-down-inner">
+
+									<a href="#" class="primary-nav__drop-down-close">
+
+										Close menu
+
+										<svg class="icon-close">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-close"></use>
+										</svg>
+
+									</a>
+
+									
+									<div class="primary-nav__drop-down-intro">
+
+										<div class="primary-nav__drop-down-intro-wrap">
+
+												<span class="h1">
+													Responsibility
+												</span>
+
+												<p>
+													Responsible business is how we do business. Our purpose is to help people to do more, feel better, live longer.
+												</p>
+
+												<p>
+													<a href="/en-gb/responsibility/">
+														Visit this section
+													</a>
+												</p>
+											
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-links">
+
+										<div class="primary-nav__drop-down-links-inner">
+
+											<div class="primary-nav__drop-down-links-header">
+
+												<a href="" class="primary-nav__drop-down-back">
+
+													<svg class="icon-mini-chevron">
+														<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+													</svg>
+
+													Back
+
+												</a>
+
+													<span class="h2">
+														Responsibility
+													</span>
+
+													<a href="/en-gb/responsibility/">
+														Visit this section
+													</a>
+
+											</div>
+
+											
+											<ul class="primary-nav__drop-down-list">
+
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/responsibility/improving-health-globally/">
+
+															<span>
+																Improving health globally
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Improving health globally
+																		</span>
+
+																		<a href="/en-gb/responsibility/improving-health-globally/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/responsibility/improving-health-globally/using-our-science-for-global-health/" itemprop="url">
+																					Using our science for global health
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/improving-health-globally/preparing-for-future-disease-threats/" itemprop="url">
+																					Preparing for future disease threats
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/improving-health-globally/pricing-and-access-strategies/" itemprop="url">
+																					Pricing and access strategies
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/improving-health-globally/prevention-awareness-and-infrastructure/" itemprop="url">
+																					Prevention, awareness and infrastructure
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/improving-health-globally/pull-the-science-2020-antimicrobial-resistance-benchmark/" itemprop="url">
+																					“Pull” the Science: 2020 Antimicrobial Resistance Benchmark
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/responsibility/operating-responsibly/">
+
+															<span>
+																Operating responsibly
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Operating responsibly
+																		</span>
+
+																		<a href="/en-gb/responsibility/operating-responsibly/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/ethics-and-values/" itemprop="url">
+																					Ethics and values
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/patient-safety-and-reliable-supply/" itemprop="url">
+																					Patient safety and reliable supply
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/research-practices/" itemprop="url">
+																					Research practices
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/engaging-with-healthcare-professionals/" itemprop="url">
+																					Engaging with healthcare professionals
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/sales-representative-incentive-programme/" itemprop="url">
+																					Sales representative incentive programme
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/public-policy-and-patient-advocacy/" itemprop="url">
+																					Public policy and patient advocacy
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/operating-responsibly/human-rights-and-modern-slavery/" itemprop="url">
+																					Human rights and modern slavery
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/responsibility/our-people/">
+
+															<span>
+																Our people
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Our people
+																		</span>
+
+																		<a href="/en-gb/responsibility/our-people/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/responsibility/our-people/inclusion-and-diversity/" itemprop="url">
+																					Inclusion and diversity
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/our-people/employee-engagement/" itemprop="url">
+																					Employee engagement
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/our-people/health-and-wellbeing/" itemprop="url">
+																					Health and wellbeing
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/our-people/learning-and-development/" itemprop="url">
+																					Learning and development
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/responsibility/environment/">
+
+															<span>
+																Environment
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Environment
+																		</span>
+
+																		<a href="/en-gb/responsibility/environment/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/responsibility/environment/carbon/" itemprop="url">
+																					Carbon
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/environment/water/" itemprop="url">
+																					Water
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/environment/waste/" itemprop="url">
+																					Waste
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/environment/environmental-stewardship/" itemprop="url">
+																					Environmental stewardship
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+													<li class="primary-nav__drop-down-item  ">
+
+														<a href="/en-gb/responsibility/responsibility-reports-data/">
+
+															<span>
+																Responsibility reports &amp; data
+															</span>
+
+																<svg class="icon-mini-chevron">
+																	<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																</svg>
+
+														</a>
+
+															<div class="primary-nav__drop-down-sub-menu">
+
+																<div class="primary-nav__drop-down-links-header">
+
+																	<a href="" class="primary-nav__drop-down-back">
+
+																		<svg class="icon-mini-chevron">
+																			<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+																		</svg>
+
+																		Back
+
+																	</a>
+
+																		<span class="h3">
+																			Responsibility reports &amp; data
+																		</span>
+
+																		<a href="/en-gb/responsibility/responsibility-reports-data/">
+																			Visit this section
+																		</a>
+
+																</div>
+
+																<div class="primary-nav__drop-down-links--scroll">
+
+																	<ul>
+																			<li class="">
+																				<a href="/en-gb/responsibility/responsibility-reports-data/reporting-archive-and-resources/" itemprop="url">
+																					Reporting archive and resources
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/responsibility-reports-data/charitable-grants/" itemprop="url">
+																					Charitable grants
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/responsibility-reports-data/trade-association-memberships/" itemprop="url">
+																					Trade association memberships
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="/en-gb/responsibility/responsibility-reports-data/patient-group-funding/" itemprop="url">
+																					Patient group funding
+																				</a>
+																			</li>
+																	</ul>
+
+																</div>
+
+															</div>
+
+													</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									
+									<div class="primary-nav__drop-down-promo">
+
+			<a href="/en-gb/responsibility/improving-health-globally/">
+
+					<img src="/media/1013/pulse-report-thumb.jpg?center=0.41124260355029585,0.67&amp;mode=crop&amp;quality=90&amp;width=307&amp;height=173&amp;rnd=131243896060000000" alt="Pulse Report Thumb"/>
+
+				Improving health globally
+
+				<svg class="icon-mini-chevron">
+					<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+				</svg>
+
+					<p>
+						Millions of people live with unmet healthcare needs. We want to help change this, using our scientific expertise, our partnerships and our global reach.
+					</p>
+
+			</a>
+
+</div>
+
+								</div>
+
+							</div>
+
+					</li>
+
+		</ul>
+
+	</nav>
+
+
+		</header>
+
+		
+				<div class="secondary-nav__locations-menu">
+
+			<div class="secondary-nav__locations-wrapper">
+
+				<span class="secondary-nav__locations-close js-close-locations">&times;</span>
+
+				<div class="secondary-nav__title">
+					Where we operate
+				</div>
+
+				<div class="secondary-nav__title secondary-nav__title--sub">
+					You are currently visiting our global website.
+				</div>
+
+				<ul class="secondary-nav__locations-regions desktop-span-7">
+
+						<li class="secondary-nav__global-link-item">
+
+							<a href="https://www.gsk.com" class="secondary-nav__global-link">
+
+								<span>
+									Global
+								</span>
+
+								<span class="secondary-nav__global-link__url">
+									https://www.gsk.com
+								</span>
+
+
+							</a>
+
+						</li>
+
+						<li class="secondary-nav__locations-accordion">
+
+							<a href="" class="secondary-nav__locations-regions-link">
+								Africa
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+								</svg>
+							</a>
+
+								<ul class="secondary-nav__locations-countries secondary-nav__locations-countries--three-col">
+
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/algeria/" target="" class="">
+												Algeria (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/kenya" target="" class="">
+												Kenya (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/morocco" target="" class="">
+												Morocco (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ng.gsk.com/" target="_blank" class="external">
+												Nigeria (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/south-africa" target="" class="">
+												South Africa (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/tunisia" target="" class="">
+												Tunisia (EN)
+											</a>
+
+
+										</li>
+								</ul>
+						</li>
+						<li class="secondary-nav__locations-accordion">
+
+							<a href="" class="secondary-nav__locations-regions-link">
+								Asia &amp; the Middle East
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+								</svg>
+							</a>
+
+								<ul class="secondary-nav__locations-countries secondary-nav__locations-countries--three-col">
+
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/bangladesh" target="" class="">
+												Bangladesh (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/cambodia" target="" class="">
+												Cambodia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk-china.com/zh-cn/" target="_blank" class="external">
+												China (Mainland) (ZH/EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/egypt" target="" class="">
+												Egypt (EN/AR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://hk.gsk.com/en-gb/" target="_blank" class="external">
+												Hong Kong and Macau (EN/ZH)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://india-pharma.gsk.com/" target="_blank" class="external">
+												India (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/indonesia/" target="" class="">
+												Indonesia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/israel" target="" class="">
+												Israel (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://jp.gsk.com/" target="_blank" class="external">
+												Japan (JP)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://kz.gsk.com/" target="_blank" class="external">
+												Kazakhstan (RU)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://kr.gsk.com/" target="_blank" class="external">
+												Korea (KO)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://my.gsk.com" target="_blank" class="external">
+												Malaysia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/myanmar" target="" class="">
+												Myanmar (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://pk.gsk.com/" target="_blank" class="external">
+												Pakistan (EN/UR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/philippines" target="" class="">
+												Philippines (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/saudi-arabia" target="" class="">
+												Saudi Arabia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/singapore/" target="" class="">
+												Singapore (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/sri-lanka" target="" class="">
+												Sri Lanka (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://tw.gsk.com/" target="_blank" class="external">
+												Taiwan (ZH)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/thailand" target="" class="">
+												Thailand (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://tr.gsk.com/" target="_blank" class="external">
+												Turkey (TR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/united-arab-emirates" target="" class="">
+												United Arab Emirates (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/vietnam/" target="" class="">
+												Vietnam (EN)
+											</a>
+
+
+										</li>
+								</ul>
+						</li>
+						<li class="secondary-nav__locations-accordion">
+
+							<a href="" class="secondary-nav__locations-regions-link">
+								Australasia
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+								</svg>
+							</a>
+
+								<ul class="secondary-nav__locations-countries ">
+
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://au.gsk.com/" target="_blank" class="external">
+												Australia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://nz.gsk.com/" target="_blank" class="external">
+												New Zealand (EN)
+											</a>
+
+
+										</li>
+								</ul>
+						</li>
+						<li class="secondary-nav__locations-accordion">
+
+							<a href="" class="secondary-nav__locations-regions-link">
+								Europe
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+								</svg>
+							</a>
+
+								<ul class="secondary-nav__locations-countries secondary-nav__locations-countries--three-col">
+
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/albania/" target="" class="">
+												Albania (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://at.gsk.com/" target="_blank" class="external">
+												Austria (DE)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/belarus" target="" class="">
+												Belarus (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://be.gsk.com/fr/" target="_blank" class="external">
+												Belgium (FR/NL/EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/bosnia-herz" target="" class="">
+												Bosnia and Herzegovina (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://bg.gsk.com/" target="_blank" class="external">
+												Bulgaria (BG)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/croatia/" target="" class="">
+												Croatia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/cyprus" target="" class="">
+												Cyprus (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://cz.gsk.com/" target="_blank" class="external">
+												Czech Republic (CS)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://dk.gsk.com/" target="_blank" class="external">
+												Denmark (DA)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/estonia/" target="" class="">
+												Estonia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://fi.gsk.com/" target="_blank" class="external">
+												Finland (FI)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://fr.gsk.com/" target="_blank" class="external">
+												France (FR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://de.gsk.com/" target="_blank" class="external">
+												Germany (DE)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://gr.gsk.com" target="_blank" class="external">
+												Greece (EL)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://hu.gsk.com/" target="_blank" class="external">
+												Hungary (HU)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ie.gsk.com/" target="_blank" class="external">
+												Ireland (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.it/" target="_blank" class="external">
+												Italy (IT)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/latvia" target="" class="">
+												Latvia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/lithuania" target="" class="">
+												Lithuania (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://be.gsk.com/" target="_blank" class="external">
+												Luxembourg (FR/NL/EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/macedonia" target="" class="">
+												Macedonia (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/malta" target="" class="">
+												Malta (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://nl.gsk.com/" target="_blank" class="external">
+												Netherlands (NL)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://no.gsk.com/" target="_blank" class="external">
+												Norway (NB)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://pl.gsk.com" target="_blank" class="external">
+												Poland (PL)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://pt.gsk.com" target="_blank" class="external">
+												Portugal (PT)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ro.gsk.com/" target="_blank" class="external">
+												Romania (RO)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ru.gsk.com/" target="_blank" class="external">
+												Russia (RU)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://rs.gsk.com" target="_blank" class="external">
+												Serbia (SR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/slovakia/" target="" class="">
+												Slovakia (SK)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="https://www.gsk.com/en-gb/contact-us/worldwide/slovenia/" target="" class="">
+												Slovenia (SL)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://es.gsk.com/" target="_blank" class="external">
+												Spain (ES)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://se.gsk.com/" target="_blank" class="external">
+												Sweden (SV)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.glaxosmithkline.ch/de-ch/" target="_blank" class="external">
+												Switzerland (DE/FR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ua.gsk.com/" target="_blank" class="external">
+												Ukraine (UK)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://uk.gsk.com" target="_blank" class="external">
+												United Kingdom (EN)
+											</a>
+
+
+										</li>
+								</ul>
+						</li>
+						<li class="secondary-nav__locations-accordion">
+
+							<a href="" class="secondary-nav__locations-regions-link">
+								North America
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+								</svg>
+							</a>
+
+								<ul class="secondary-nav__locations-countries ">
+
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ca.gsk.com/en-ca/" target="_blank" class="external">
+												Canada (EN/FR)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/mexico" target="" class="">
+												Mexico (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://us.gsk.com/" target="_blank" class="external">
+												United States (EN)
+											</a>
+
+
+										</li>
+								</ul>
+						</li>
+						<li class="secondary-nav__locations-accordion">
+
+							<a href="" class="secondary-nav__locations-regions-link">
+								South &amp; Central America
+								<svg class="icon-mini-chevron">
+									<use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron"/>
+								</svg>
+							</a>
+
+								<ul class="secondary-nav__locations-countries secondary-nav__locations-countries--two-col">
+
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://ar.gsk.com/" target="_blank" class="external">
+												Argentina (ES)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://br.gsk.com/" target="_blank" class="external">
+												Brazil (PT)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/caribbean-islands" target="" class="">
+												Caribbean Islands (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/chile" target="" class="">
+												Chile (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/colombia" target="" class="">
+												Colombia (EN/ES)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/costa-rica" target="" class="">
+												Costa Rica (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/dominican-republic" target="" class="">
+												Dominican Republic (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/ecuador" target="" class="">
+												Ecuador (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/el-salvador" target="" class="">
+												El Salvador (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/guatemala" target="" class="">
+												Guatemala (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/honduras" target="" class="">
+												Honduras (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/jamaica" target="" class="">
+												Jamaica (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/panama" target="" class="">
+												Panama (EN/ES)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/peru" target="" class="">
+												Peru (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/trinidad-tobago" target="" class="">
+												Trinidad &amp; Tobago (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/uruguay" target="" class="">
+												Uruguay (EN)
+											</a>
+
+
+										</li>
+										<li class="secondary-nav__locations-countries-item">
+
+											<a href="http://www.gsk.com/en-gb/contact-us/worldwide/venezuela" target="" class="">
+												Venezuela (EN)
+											</a>
+
+
+										</li>
+								</ul>
+						</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+
+		<main role="main" itemscope itemprop="mainContentOfPage">
+			
+
+
+
+    <nav class="breadcrumbs">
+        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a href="/en-gb/" itemprop="item" itemscope itemtype="http://schema.org/Thing" aria-label="en-gb">
+                        <svg class="icon-home" itemprop="image">
+                            <use xlink:href="/assets/img/icon-sprite.svg#icon-home" />
+                        </svg>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a href="/en-gb/media/" itemprop="item" itemscope itemtype="http://schema.org/Thing">
+                            <span itemprop="name">Media</span>
+                        </a>
+                        <meta itemprop="position" content="2" />
+                    </li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <span itemprop="item" itemscope itemtype="http://schema.org/Thing">
+                    <span itemprop="name">Press releases</span>
+                </span>
+                <meta itemprop="position" content="3" />
+            </li>
+        </ol>
+    </nav>
+    <div class="simple-listing">
+        <div class="main-container">
+            <div class="simple-listing__header">
+                <h1>Press releases</h1>
+                    <div class="intro"><p>Press releases dating back to 2009 are available below. Search them by keyword or browse by year/business category. Press releases for our local operating companies can be viewed on our <a href="https://www.gsk.com/en-gb/contact-us/worldwide/">country websites</a>.</p></div>
+            </div>
+
+            
+        <div class="press-release-search">
+            <form action="">
+                <div class="search-form">
+                    <svg class="icon-search">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-search" />
+                    </svg>
+                    <input type="search"
+                           name="q"
+                           class="press-release-search__text-search"
+                           title="Enter a search term..."
+                           placeholder="Enter a search term..."
+                           value="">
+                </div>
+                <div class="press-release-search__option-wrapper" data-date="D MMM">
+                    <h3>Filter by:</h3>
+
+                        <div class="simple-listing__filters-select-wrapper">
+
+                            <select class="simple-listing__filters-select simple-listing__filters-select--category" id="f" name="f"><option value="">All categories</option>
+<option value="investors+and+corporate">Investors and Corporate</option>
+<option value="pharmaceuticals">Pharmaceuticals</option>
+<option value="vaccines">Vaccines</option>
+<option value="consumer+healthcare">Consumer Healthcare</option>
+<option value="research+%26+development">Research &amp; development</option>
+</select>
+                        </div>
+
+                    <div class="simple-listing__filters-select-wrapper">
+                        <select class="simple-listing__filters-select simple-listing__filters-select--date" id="dr" name="dr"><option value="">Date</option>
+<option value="all">All</option>
+<option value="7days">Last 7 days</option>
+<option value="1month">Last 1 Month</option>
+<option value="6months">Last 6 months</option>
+</select>
+                    </div>
+
+                    <div class="simple-listing__filters-select-wrapper">
+                        <a class="press-release-search__date-range" href=""><span class="date-range">Date range</span><span class="date-range-start"></span><span class="date-range-end"></span></a>
+                    </div>
+
+                    <p class="keyword-hidden"></p>
+                    <p class="category-hidden"></p>
+                    <p class="date-range-hidden"></p>
+                    <p class="start-date-hidden"></p>
+                    <p class="end-date-hidden"></p>
+
+                    <a class="button" href="">Search</a>
+
+                </div>
+                <div>
+                    <div class="select-input">
+
+                        <select class="auto-submit-press-release" data-key="ord" id="s" name="s"><option value="">Sort by</option>
+<option selected="selected" value="date">Most recent</option>
+<option value="rel">Most relevant</option>
+</select>
+                        <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-chevron-down"></use></svg>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+            <div class="content-wrapper">
+                <ul class="simple-listing__list">
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/viiv-healthcare-presents-implementation-research-study-on-how-best-to-integrate-an-investigational-once-monthly-injectable-hiv-treatment-in-us-healthcare-practices/" class="simple-listing__link" itemprop="url">
+                <time datetime="04/07/2020 08:00:00" itemprop="datePublished">04 July 2020</time>
+            <h2 itemprop="headline name">ViiV Healthcare presents positive data from first-ever implementation research study on how best to integrate an investigational once-monthly injectable HIV treatment in US healthcare practices</h2>
+                <p itemprop="description">Findings presented showed healthcare providers perceived implementation of the treatment as feasible and appropriate for people with HIV.</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/viiv-healthcare-announces-us-fda-approval-for-rukobia-fostemsavir-a-first-in-class-treatment-for-hiv-in-adults-with-few-treatment-options-available/" class="simple-listing__link" itemprop="url">
+                <time datetime="02/07/2020 16:06:42" itemprop="datePublished">02 July 2020</time>
+            <h2 itemprop="headline name">ViiV Healthcare announces US FDA approval for Rukobia (fostemsavir), a first-in-class treatment for HIV in adults with few treatment options available</h2>
+                <p itemprop="description">ViiV today announced that the US FDA has approved Rukobia (fostemsavir), 600 mg extended-release tablets.</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/viiv-healthcare-to-present-new-data-on-long-acting-regimens-for-hiv-prevention-and-treatment-at-aids-2020-virtual/" class="simple-listing__link" itemprop="url">
+                <time datetime="02/07/2020 08:04:44" itemprop="datePublished">02 July 2020</time>
+            <h2 itemprop="headline name">ViiV Healthcare to present new data on long-acting regimens for HIV prevention and treatment, alongside extensive insights into the evolving needs of people living with HIV at 23rd International AIDS Conference (AIDS 2020: Virtual)</h2>
+                <p itemprop="description">ViiV Healthcare will present over 20 abstracts during next week at the 23rd International AIDS Conference (AIDS 2020: Virtual), 6-10 July.</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-receives-first-regulatory-approval-for-duvroq-daprodustat-in-japan-for-patients-with-anaemia-due-to-chronic-kidney-disease/" class="simple-listing__link" itemprop="url">
+                <time datetime="29/06/2020 08:00:16" itemprop="datePublished">29 June 2020</time>
+            <h2 itemprop="headline name">GSK receives first regulatory approval for Duvroq (daprodustat) in Japan for patients with anaemia due to chronic kidney disease</h2>
+                <p itemprop="description">Approval marks a significant step in GSK’s global efforts to help patients with anaemia due to chronic kidney disease (CKD).</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-announces-fda-advisory-committee-meeting-to-review-belantamab-mafodotin-for-the-treatment-of-patients-with-relapsedrefractory-multiple-myeloma/" class="simple-listing__link" itemprop="url">
+                <time datetime="19/06/2020 15:35:00" itemprop="datePublished">19 June 2020</time>
+            <h2 itemprop="headline name">GSK announces FDA Advisory Committee meeting to review belantamab mafodotin for the treatment of patients with relapsed/refractory multiple myeloma</h2>
+                <p itemprop="description">GSK announces FDA Advisory Committee meeting to review belantamab mafodotin</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-covid-19-vaccine-development-collaboration-with-clover-biopharmaceuticals-begins-clinical-trials/" class="simple-listing__link" itemprop="url">
+                <time datetime="19/06/2020 08:00:11" itemprop="datePublished">19 June 2020</time>
+            <h2 itemprop="headline name">GSK COVID-19 vaccine development collaboration with Clover Biopharmaceuticals begins clinical trials</h2>
+                <p itemprop="description">Clover Biopharmaceuticals initiates phase 1 study using GSK pandemic adjuvant in combination with COVID-19 vaccine candidate SCB-2019</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-prices-280-336-000-senior-notes-due-2023-exchangeable-into-theravance-biopharma-ordinary-shares/" class="simple-listing__link" itemprop="url">
+                <time datetime="18/06/2020 11:00:00" itemprop="datePublished">18 June 2020</time>
+            <h2 itemprop="headline name">GSK prices $280,336,000 Senior Notes Due 2023 Exchangeable into Theravance Biopharma Ordinary Shares</h2>
+                <p itemprop="description">GSK prices $280,336,000 Senior Notes Due 2023 Exchangeable into Theravance Biopharma Ordinary Shares</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-announces-proposed-unregistered-offering-of-senior-notes-exchangeable-into-theravance-biopharma-ordinary-shares/" class="simple-listing__link" itemprop="url">
+                <time datetime="17/06/2020 11:00:35" itemprop="datePublished">17 June 2020</time>
+            <h2 itemprop="headline name">GSK announces Proposed Unregistered Offering of Senior Notes Exchangeable into Theravance Biopharma Ordinary Shares</h2>
+                <p itemprop="description">GSK announces Proposed Unregistered Offering of Senior Notes Exchangeable into Theravance Biopharma Ordinary Shares</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/ideaya-and-gsk-announce-a-broad-partnership-in-synthetic-lethality-an-emerging-field-in-precision-medicine-oncology/" class="simple-listing__link" itemprop="url">
+                <time datetime="16/06/2020 09:51:41" itemprop="datePublished">16 June 2020</time>
+            <h2 itemprop="headline name">IDEAYA and GSK Announce a Broad Partnership in Synthetic Lethality, an Emerging Field in Precision Medicine Oncology</h2>
+                <p itemprop="description">IDEAYA and GSK Announce a Broad Partnership in Synthetic Lethality, an Emerging Field in Precision Medicine Oncology</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/viiv-healthcare-announces-us-fda-approval-of-the-first-ever-dispersible-tablet-formulation-of-dolutegravir/" class="simple-listing__link" itemprop="url">
+                <time datetime="12/06/2020 13:43:33" itemprop="datePublished">12 June 2020</time>
+            <h2 itemprop="headline name">ViiV Healthcare announces US FDA approval of the first-ever dispersible tablet formulation of dolutegravir, Tivicay PD, a once-daily treatment for children living with HIV</h2>
+                <p itemprop="description">Press release</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-announces-new-data-presentations-from-the-dreamm-programme/" class="simple-listing__link" itemprop="url">
+                <time datetime="04/06/2020 12:00:26" itemprop="datePublished">04 June 2020</time>
+            <h2 itemprop="headline name">GSK announces new data presentations from the DREAMM programme exploring investigational belantamab mafodotin in patients with relapsed/refractory multiple myeloma</h2>
+                <p itemprop="description">16 presentations, including new analyses from the pivotal DREAMM-2 study and initial results from the DREAMM-4 study</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-announces-intention-to-produce-1-billion-doses-of-pandemic-vaccine-adjuvant/" class="simple-listing__link" itemprop="url">
+                <time datetime="28/05/2020 07:00:31" itemprop="datePublished">28 May 2020</time>
+            <h2 itemprop="headline name">GSK announces intention to produce 1 billion doses of pandemic vaccine adjuvant in 2021 to support multiple COVID-19 vaccine collaborations</h2>
+                <p itemprop="description">Announcement follows completion of global manufacturing review and decision to invest in expanded manufacturing capacity</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/dreamm-2-and-dreamm-6-data-at-asco-reinforce-the-potential-of-gsk-s-investigational-belantamab-mafodotin/" class="simple-listing__link" itemprop="url">
+                <time datetime="27/05/2020 14:00:05" itemprop="datePublished">27 May 2020</time>
+            <h2 itemprop="headline name">DREAMM-2 and DREAMM-6 data at ASCO reinforce the potential of GSK’s investigational belantamab mafodotin in patients with relapsed/refractory multiple myeloma</h2>
+                <p itemprop="description">13-month update on the DREAMM-2 study shows median overall survival of 13.7 months and median duration of response of 11 months</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/fda-grants-priority-review-of-nucala-for-patients-with-hypereosinophilic-syndrome-hes/" class="simple-listing__link" itemprop="url">
+                <time datetime="27/05/2020 08:30:23" itemprop="datePublished">27 May 2020</time>
+            <h2 itemprop="headline name">FDA grants priority review of Nucala for patients with Hypereosinophilic Syndrome (HES)</h2>
+                <p itemprop="description">An approval would give Nucala a third indication in an eosinophil-driven disease</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-partners-with-samsung-biologics/" class="simple-listing__link" itemprop="url">
+                <time datetime="21/05/2020 20:22:50" itemprop="datePublished">21 May 2020</time>
+            <h2 itemprop="headline name">GSK partners with Samsung Biologics to secure additional manufacturing capacity for innovative biopharmaceutical portfolio</h2>
+                <p itemprop="description">Samsung Biologics will provide GSK with additional capacity for large-scale biopharmaceutical product manufacturing.</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-highlights-scientific-innovation-and-advances-in-its-growing-oncology-portfolio-at-asco-2020/" class="simple-listing__link" itemprop="url">
+                <time datetime="20/05/2020 14:00:06" itemprop="datePublished">20 May 2020</time>
+            <h2 itemprop="headline name">GSK highlights scientific innovation and advances in its growing oncology portfolio at ASCO 2020</h2>
+                <p itemprop="description">26 abstracts across 8 tumour types, advancing GSK’s goal of maximising outcomes for patients</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/global-hiv-prevention-study-to-stop-early-after-viiv-healthcare-s-long-acting-injectable-formulation-of-cabotegravir-dosed-every-two-months-shows-higher-efficacy-than-daily-oral-prep/" class="simple-listing__link" itemprop="url">
+                <time datetime="18/05/2020 06:06:20" itemprop="datePublished">18 May 2020</time>
+            <h2 itemprop="headline name">Global HIV prevention study to stop early after ViiV Healthcare’s long-acting injectable formulation of cabotegravir dosed every two months shows higher efficacy than daily oral PrEP</h2>
+                <p itemprop="description">Interim analysis of the HIV Prevention Trials Network (HPTN) 083 study.</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/fda-approves-parp-inhibitor-in-first-line-monotherapy-maintenance-treatment-for-women-with-platinum-responsive-advanced-ovarian-cancer-regardless-of-biomarker-status/" class="simple-listing__link" itemprop="url">
+                <time datetime="29/04/2020 20:19:25" itemprop="datePublished">29 April 2020</time>
+            <h2 itemprop="headline name">FDA approves Zejula (niraparib) as the only once-daily PARP inhibitor in first-line monotherapy maintenance treatment for women with platinum-responsive advanced ovarian cancer regardless of biomarker status</h2>
+                <p itemprop="description">Zejula is the only oral monotherapy available as first-line maintenance treatment for women regardless of BRCA mutational status</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-delivers-strong-q1-sales-91-billion-plus19-aer-plus19-cer-proforma-plus10-cerstar/" class="simple-listing__link" itemprop="url">
+                <time datetime="29/04/2020 12:00:40" itemprop="datePublished">29 April 2020</time>
+            <h2 itemprop="headline name">GSK delivers strong Q1: sales &#163;9.1 billion +19% AER, +19% CER (Proforma +10% CER*)</h2>
+                <p itemprop="description">GSK delivers strong Q1: sales &#163;9.1 billion +19% AER, +19% CER (Proforma +10% CER*)</p>
+            <span>Read more</span>
+        </a>
+    </li>
+    <li class="simple-listing__item" itemscope itemtype="http://schema.org/NewsArticle">
+        <a href="/en-gb/media/press-releases/gsk-presents-new-data-from-the-garnet-study-demonstrating-potential-of-dostarlimab-to-treat-a-subset-of-women-with-recurrent-or-advanced-endometrial-cancer/" class="simple-listing__link" itemprop="url">
+                <time datetime="23/04/2020 20:00:41" itemprop="datePublished">23 April 2020</time>
+            <h2 itemprop="headline name">GSK presents new data from the GARNET study demonstrating potential of dostarlimab to treat a subset of women with recurrent or advanced endometrial cancer</h2>
+                <p itemprop="description">Data accepted as a late-breaking abstract and presented as a webinar as part of the Society of Gynecologic Oncology 2020 virtual congress</p>
+            <span>Read more</span>
+        </a>
+    </li>
+                </ul>
+                
+                
+            <div class="pagination-wrapper">
+                <ol class="pagination">
+                    
+                            <li class="pagination__number pagination__current">
+                <span>1</span>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=2">2</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=3">3</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=4">4</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=5">5</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=6">6</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=7">7</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=8">8</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=9">9</a>
+        </li>
+        <li class="pagination__number ">
+                <a href="/en-gb/media/press-releases/?p=10">10</a>
+        </li>
+
+                    
+                        <li class="pagination__next">
+                            <a href="/en-gb/media/press-releases/?p=2">
+                                <svg class="icon-mini-chevron">
+                                    <use xlink:href="/assets/img/icon-sprite.svg#icon-mini-chevron" />
+                                </svg>
+                            </a>
+                        </li>
+                </ol>
+
+
+
+                <div class="pagination__footer-per-page">
+                    <span>Number of results per page</span>
+                    <div class="select-input">
+                        <select class="auto-submit" data-action="/en-gb/media/press-releases/?" data-placeholder="--" data-key="ps">
+                                <option value="10" >10</option>
+                                <option value="20" selected>20</option>
+                                <option value="50" >50</option>
+                                <option value="100" >100</option>
+                        </select>
+                        <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/icon-sprite.svg#icon-chevron-down"></use></svg>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="grid-listing-module highlight">
+        <div class="main-container">
+                <h2>Find out more about us</h2>
+
+            <ul>
+                    <li>
+                        <a href="/en-gb/about-us/">
+                            <div class="grid-listing-module__img">
+                                    <img src="/assets/img/lazy.png" data-src="/media/4345/about-us-hero-test.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=434&amp;height=244&amp;rnd=131566056630000000" class="js-lazy-load" alt="About us new hero">
+                            </div>
+                            <div class="grid-listing-module__content">
+                                    <h3>About us</h3>
+                                                                    <p>We are a science-led global healthcare company with a special purpose: to help people do more, feel better, live longer.</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/en-gb/products/">
+                            <div class="grid-listing-module__img">
+                                    <img src="/assets/img/lazy.png" data-src="/media/3727/ellipta-manufacturing.jpg?center=0.748730964467005,0.43333333333333335&amp;mode=crop&amp;quality=90&amp;width=434&amp;height=244&amp;rnd=131430322580000000" class="js-lazy-load" alt="Ellipta manufacturing">
+                            </div>
+                            <div class="grid-listing-module__content">
+                                    <h3>Products</h3>
+                                                                    <p>We research and develop a broad range of innovative products in three primary areas of Pharmaceuticals, Vaccines and Consumer Healthcare</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/en-gb/research-and-development/">
+                            <div class="grid-listing-module__img">
+                                    <img src="/assets/img/lazy.png" data-src="/media/5628/montage-preview-image.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=434&amp;height=244&amp;rnd=132079287190000000" class="js-lazy-load" alt="">
+                            </div>
+                            <div class="grid-listing-module__content">
+                                    <h3>Research and development</h3>
+                                                                    <p>Science can improve health and well-being in so many ways, from the development of everyday healthcare products to medicines and vaccines.</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/en-gb/behind-the-science/">
+                            <div class="grid-listing-module__img">
+                                    <img src="/assets/img/lazy.png" data-src="/media/5644/11939_gsk_ar_2016_s5_139_original.jpg?anchor=center&amp;mode=crop&amp;quality=90&amp;width=434&amp;height=244&amp;rnd=132079287190000000" class="js-lazy-load" alt="">
+                            </div>
+                            <div class="grid-listing-module__content">
+                                    <h3>Behind the science</h3>
+                                                                    <p>Explore innovations in medicines, vaccines and consumer healthcare from inside and outside our labs.</p>
+                            </div>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+ 
+		</main>
+
+		
+		
+
+		
+		
+
+
+		
+		    <footer class="footer" role="contentinfo" itemscope=itemscope itemtype="http://schema.org/WPFooter">
+        <div class="footer-wrapper">
+
+                <a href="/en-gb/" class="gsk-logo">
+                    <span>GSK</span>
+                </a>
+
+            <nav class="footer__social" role="navigation" itemscope=itemscope itemtype="http://schema.org/SiteNavigationElement">
+                <ul class="footer__social-list">
+                            <li class="footer__social-list-item">
+
+                <a href="https://www.facebook.com/GSK" class="social-links__popup-list-anchor" target="_blank">
+                    <svg class="icon-facebook" role="img">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-facebook" />
+                    </svg>
+                </a>
+
+        </li>
+
+
+                            <li class="footer__social-list-item">
+
+                <a href="http://twitter.com/GSK" class="social-links__popup-list-anchor" target="_blank">
+                    <svg class="icon-twitter" role="img">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-twitter" />
+                    </svg>
+                </a>
+
+        </li>
+
+                    
+                            <li class="footer__social-list-item">
+
+                <a href="http://www.youtube.com/GSK" class="social-links__popup-list-anchor" target="_blank">
+                    <svg class="icon-youtube" role="img">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-youtube" />
+                    </svg>
+                </a>
+
+        </li>
+
+                    
+                            <li class="footer__social-list-item">
+
+                <a href="http://www.flickr.com/photos/glaxosmithkline" class="social-links__popup-list-anchor" target="_blank">
+                    <svg class="icon-flickr" role="img">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-flickr" />
+                    </svg>
+                </a>
+
+        </li>
+
+
+                            <li class="footer__social-list-item">
+
+                <a href="http://www.linkedin.com/company/glaxosmithkline" class="social-links__popup-list-anchor" target="_blank">
+                    <svg class="icon-linkedin" role="img">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-linkedin" />
+                    </svg>
+                </a>
+
+        </li>
+
+
+                    
+
+                            <li class="footer__social-list-item">
+
+                <a href="https://www.instagram.com/gsk/ " class="social-links__popup-list-anchor" target="_blank">
+                    <svg class="icon-instagram" role="img">
+                        <use xlink:href="/assets/img/icon-sprite.svg#icon-instagram" />
+                    </svg>
+                </a>
+
+        </li>
+
+                    
+                        <li class="footer__social-list-item">
+                            <a href="https://www.gsk.com/en-gb/media/rss-feeds/" target="" itemprop="url" aria-label="Instagram: https://www.gsk.com/en-gb/media/rss-feeds/">
+                                <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+                                <svg class="icon-rss" width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>RSS</title>
+                                    <desc></desc>
+                                    <defs></defs>
+                                    <g id="2.-Content" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="RSS-Icon-inactive">
+                                            <rect id="Rectangle-8" fill="#7E7E7E" x="0" y="0" width="27.083095" height="27.083095" rx="6"></rect>
+                                            <g id="Group-15" transform="translate(6.982821, 6.722690)" fill="#FFFFFF">
+                                                <path d="M9.81003265,13.7660191 L7.72652705,13.7660191 C7.72652705,9.53312979 4.29509223,6.10169497 0.0622028737,6.10169497 L0.0622028737,4.01818937 C5.4457806,4.01818937 9.81003265,8.38244142 9.81003265,13.7660191 Z M13.812526,13.7660191 L11.7290204,13.7660191 C11.7290204,7.32261377 6.50560825,2.09920165 0.0622028737,2.09920165 L0.0622028737,0.0156960522 C7.65629662,0.0156960522 13.812526,6.1719254 13.812526,13.7660191 Z" id="Oval-3" fill-rule="nonzero"></path>
+                                                <circle id="Oval-5" cx="2.09614964" cy="11.7320724" r="2.03394677"></circle>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+
+                </ul>
+
+
+            </nav>
+
+                <nav class="footer__links" role="navigation" itemscope=itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        <ul class="footer__links-list">
+                            <li class="footer__links-list-item">
+                                <h4 class="footer__links-list-heading">Quick links</h4>
+                            </li>
+
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/media/resource-centre/our-contribution-to-the-fight-against-2019-ncov/'  itemprop='url' target=''>COVID-19 response</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/behind-the-science/'  itemprop='url' target=''>Behind the science</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/about-us/'  itemprop='url' target=''>About us</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/products/'  itemprop='url' target=''>Products</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/careers/'  itemprop='url' target=''>Careers</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/investors/'  itemprop='url' target=''>Investors</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/media/'  itemprop='url' target=''>Media</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/research-and-development/'  itemprop='url' target=''>Research and development</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/responsibility/'  itemprop='url' target=''>Responsibility</a>
+                                </li>
+                        </ul>
+                        <ul class="footer__links-list">
+                            <li class="footer__links-list-item">
+                                <h4 class="footer__links-list-heading">Legal</h4>
+                            </li>
+
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/terms-of-use/'  itemprop='url' target=''>Terms of use</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/cookie-policy/'  itemprop='url' target=''>Cookie policy</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/privacy-notice/'  itemprop='url' target=''>Global website privacy notice</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/media/5887/modern-slavery-act-statement-2019.pdf'  itemprop='url' target='_blank'>Modern Slavery Act statement 2019</a><span class='download-list__size'>PDF - 214.5KB</span>
+                                </li>
+                        </ul>
+                        <ul class="footer__links-list">
+                            <li class="footer__links-list-item">
+                                <h4 class="footer__links-list-heading">Accessibility</h4>
+                            </li>
+
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/sitemap/'  itemprop='url' target=''>Sitemap</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/accessibility/'  itemprop='url' target=''>Accessibility</a>
+                                </li>
+                        </ul>
+                        <ul class="footer__links-list">
+                            <li class="footer__links-list-item">
+                                <h4 class="footer__links-list-heading">Contact us</h4>
+                            </li>
+
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/contact-us/'  itemprop='url' target=''>Contact us</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/contact-us/headquarters/'  itemprop='url' target=''>Headquarters</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/contact-us/worldwide/'  itemprop='url' target=''>Worldwide directory</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/contact-us/partnerships/'  itemprop='url' target=''>Partnerships</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/contact-us/report-a-possible-side-effect/'  itemprop='url' target=''>Report a possible side effect</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/contact-us/privacy-contact-information/'  itemprop='url' target=''>Privacy contact information</a>
+                                </li>
+                        </ul>
+                        <ul class="footer__links-list">
+                            <li class="footer__links-list-item">
+                                <h4 class="footer__links-list-heading">Business to business</h4>
+                            </li>
+
+                                <li class="footer__links-list-item">
+                                    <a class='anchor anchor--external' href='https://supplier.gsk.com/irj/portal/public?guest_user=SUP_GUEST_EN'  itemprop='url' target='_blank'>Supplier website</a>
+                                </li>
+                                <li class="footer__links-list-item">
+                                    <a class='anchor' href='/en-gb/business-to-business/'  itemprop='url' target=''>Business to business</a>
+                                </li>
+                        </ul>
+                </nav>
+
+<p><span>© 2001-2020 </span>GlaxoSmithKline plc. All rights reserved. Trade marks are owned by or licensed to the GSK group of companies.<br /><span>GlaxoSmithKline plc. Registered in England and Wales No. 3888792.</span><br /><span>Registered office: 980 Great West Road, Brentford, Middlesex, TW8 9GS, United Kingdom.</span></p>
+        </div>
+
+    </footer>
+
+
+
+
+
+		
+		    <div id="cqcqButton"></div>
+
+
+		
+		
+
+		
+		
+
+		<script src="/assets/js/min/scripts.min.js?v=1"></script>
+
+		
+		
+
+		
+
+	</div>
+	
+
+</body>
+</html>
