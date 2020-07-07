@@ -1,2 +1,1 @@
-No cached webpage found for https://www.pfizer.com/news/press-release/press-releases-archive 
-Initializing page in logs/CACHE-pfizer_com-news-press-release-press-releases-archive.html 
+No update from https://www.pfizer.com/news/press-release/press-releases-archive 
