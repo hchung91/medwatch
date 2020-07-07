@@ -1,0 +1,654 @@
+import os
+import sys
+import time
+import math
+import requests
+import json
+import hashlib
+from datetime import datetime
+
+import pandas as pd
+from bs4 import BeautifulSoup 
+from pandas_datareader import data as pd_data
+from yahooquery import Ticker
+from googlesearch import search
+
+
+
+# COLLECTING AND PREPPING DATA ON COMPANY INFO
+
+
+
+def get_company_info(company_name):
+	'''
+	Queries Yahoo! Finance Symbol Suggest API with a company name
+	and returns all results of possibly matched publicly listed companies 
+	and related info including a company's symbol, exchange, website, and 
+	the company's name as listed on Yahoo! for comparison.
+
+	e.g. get_company_info('google')
+	     returns 
+
+	     [{"symbol":"GOOG","name":"Alphabet Inc.","exch":"NMS",
+	     "type":"S","exchDisp":"NASDAQ","typeDisp":"Equity"},
+	     {"symbol":"GOOGL","name":"Alphabet Inc.","exch":"NMS",
+	     "type":"S","exchDisp":"NASDAQ","typeDisp":"Equity"},
+	     {"symbol":"^VXGOG","name":"CBOE EQUITY VIXON GOOGLE","exch":"WCB",
+	     "type":"I","exchDisp":"Chicago Board Options Exchange","typeDisp":"Index"},
+	     {"symbol":"^NY2LGOOG","name":"ICE Leveraged 2x GOOG Index","exch":"NYS",
+	     "type":"I","exchDisp":"NYSE","typeDisp":"Index"},
+	     {"symbol":"GOOGL.MI","name":"ALPHABET CLASSE A","exch":"MIL",
+	     "type":"S","exchDisp":"Milan","typeDisp":"Equity"},
+	     {"symbol":"GOOGL.BA","name":"Alphabet Inc.","exch":"BUE",
+	     "type":"S","exchDisp":"Buenos Aires","typeDisp":"Equity"},
+	     {"symbol":"GOOGL.MX","name":"Alphabet Inc.","exch":"MEX",
+	     "type":"S","exchDisp":"Mexico","typeDisp":"Equity"},
+	     {"symbol":"GOOG.MI","name":"Alphabet Inc.","exch":"MIL",
+	     "type":"S","exchDisp":"Milan","typeDisp":"Equity"},
+	     {"symbol":"GOOG.MX","name":"Alphabet Inc.","exch":"MEX",
+	     "type":"S","exchDisp":"Mexico","typeDisp":"Equity"}]}}
+
+	Parameters:
+	-------------
+	company_name: str - name of organization
+
+	Returns:
+    -------------
+    yahoo_json: json - JSON of all relevant company matches and financial infromation
+	'''
+
+	# Fix formatting of name
+	co = company_name.replace('.','').replace(' ','%20')
+	
+	query = f'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query={co}\
+	&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback'
+
+	response = requests.get(query)
+	
+	fdata = response.test.split('(', 1)[1]
+	fdata = fdata.rsplit(')', 1)[0]
+	data = json.loads(fdata)
+	yahoo_json = data['ResultSet']['Result']
+
+	return yahoo_json
+
+
+
+def check_usa_mkts(yahoo_json):
+	'''
+	Takes result of Yahoo! Finance company search query and prioritizes returning
+	results from US exchanges.  
+
+	e.g. sym, exch, yname, am = check_usa_mkts(get_company_info('google'))
+	     returns
+	     sym = 'GOOG'
+	     exch = 'NASDAQ'
+	     yname = 'Alphabet'
+	     am = 'Y'
+
+
+	Parameters:
+	-------------
+	yahoo_json: json - JSON from Yahoo! Finance Symbol Suggest API. JSON can
+		be obtained using the medwatch get_company_info() method
+
+	Returns:
+    -------------
+    symbol: str - Company's ticker symbol
+    exchange: str - Exchange company is listed under
+    name: str - Official company name listed on Yahoo!
+    usa: str - 'Y' for is on US exchange, 'N' otherwise (**may change to T/F)
+    '''
+
+    # List of US exchanges
+    usa_mkts = ['NYSE', 'NASDAQ', 'AMEX', 
+               'BSE', 'CBOE', 'CBOT', 
+               'CME', 'CHX', 'ISE', 
+               'MS4X', 'NSX', 'PHLX']
+    
+    # Load JSON into dataframe (**may operated directly as JSON)
+    # and see if any of the exchanges listed in the query result match
+    # the list of usa_mkts
+    df = pd.DataFrame(yahoo_json)
+    match = df.loc[df['exchDisp'].isin(usa_mkts)]
+    
+    # If no matches in US exchanges, return the first result
+    if len(match) == 0:
+        symbol = df['symbol'][0]
+        exchange = df['exchDisp'][0]
+        name = df['name'][0]
+        usa = 'N'
+    
+    # Otherwise return first result matched to a US market
+    else:
+        symbol = match['symbol'][0]
+        exchange = match['exchDisp'][0]
+        name = match['name'][0]
+        usa = 'Y'
+        
+    return symbol, exchange, name, usa
+
+
+
+def get_company_url(ticker_symbol: str):
+	'''
+	Get company's official website/homepage as listed on Yahoo! Finance from
+	its ticker symbol.
+
+	e.g. get_company_url('GOOG')
+		 returns https://www.google.com/
+
+	Parameters:
+	-------------
+	ticker_symbol: str - Company's ticker symbol
+
+	Returns:
+    -------------
+    url: str - String of company's homepage url
+	'''
+
+	response = Ticker(ticker_symbol, asynchronous=True)
+	data = response.asset_profile
+	url = data[ticker_symbol]['website']
+
+	return url
+
+
+
+def is_academia(organization: str):
+	'''
+	Checks if organization is associated with academia. 
+	Since academic institutions are not publicly traded, this
+	helps serve as an indicator to ignore.
+
+	Checks for keywords associated with academia.
+
+	e.g. is_academia('Arizona State University')
+	     returns True
+
+	     is academia('Google')
+	     returns False
+
+	Parameters:
+	-------------
+	organization: str - Full name of organization (currently cannot handle abbreviations) 
+
+	Returns:
+    -------------
+    tf: bool - Boolean True if academia, False otherwise
+    '''
+
+    # Current list of keywords associated with academia
+    keywords = ['university', 'college', 'academy']
+
+    # Check if any of the keywords can be found in the given organization
+    # Case set to lower to minimize issues with formatting
+    # https://stackoverflow.com/questions/8122079/python-how-to-check-a-string-for-substrings-from-a-list
+    tf = any(map(organization.lower().__contains__, keywords))
+
+    # Return true or false
+    return tf
+
+
+
+def get_market_cap(symbol):
+	'''
+	Finds company's market cap based off the company's ticker symbol.
+	Value returned will be USD for US companies. 
+	**Need to address different currencies and possibly include currency conversion
+
+	e.g. get_market_cap('GOOG')
+	     returns 1034277860323
+
+	Parameters:
+	-------------
+	symbol: str - Company's ticker symbol
+
+	Returns:
+    -------------
+    cap: int - Market cap of company in currency of country company is located in
+	'''
+	cap = pd_data.get_quote_yahoo(symbol)['marketCap']
+	cap = cap[symbol]
+
+	return cap
+
+
+
+def id_company_size(market_cap):
+	'''
+	Classifies pharmaceutical/biotech size as small, medium, or large 
+	based on market cap (USD).
+
+	e.g. id_company_size(3e9)
+		 returns 'medium'
+	
+	Parameters:
+	-------------
+	market_cap - Float or int of a company's market cap
+
+	Returns:
+    -------------
+    size: str - Classification of company as small, medium, or large
+	'''
+
+	sizes = ['small', 'medium', 'large']
+    thresh = [0, 2e9, 10e9]
+    
+    if market_cap > thresh[2]:
+        size = sizes[2]
+    elif market_cap > thresh[1]:
+        size = sizes[1]
+    else:
+        size = sizes[0]
+        
+    return size
+
+
+
+def search_google(query, num_results = 1):
+	'''
+	Takes search phrase, queries Google, and returns list of domains of results.
+	Defaulted to return 1 result but can be modified.
+
+	e.g. search_google('apple')
+		 returns ['https://www.apple.com/']
+	
+	Parameters:
+	-------------
+	query: str - String of what to search on Google
+	num_results: int = 1 - Maximum number of results returned
+
+	Returns:
+    -------------
+    results: list - List of strings with domains of search results
+	'''
+
+	results = []
+    num_ppg = min([num_results, 10])
+    for i in search(query,           # The query you want to run
+                tld = 'com',         # The top level domain
+                lang = 'en',         # The language
+                num = num_ppg,       # Number of results per page
+                start = 0,           # First result to retrieve
+                stop = num_results,  # Last result to retrieve
+                pause = 3.0,         # Lapse between HTTP requests
+               ):
+        
+        results.append(i)
+    
+    if len(results) == 0:
+        results = ['n/a']
+        
+    return results
+
+
+
+def prune_url(full_url: str):
+	'''
+	Method to clean up domain (e.g. removes www. or http://)
+	Found having full URL can yield odd Google searches
+
+	e.g. prune_url('https://www.google.com/')
+		 returns 'google.com'
+
+	Parameters:
+	-------------
+	full_url: str - String of URL to be pruned
+
+	Returns:
+    -------------
+    pruned_url: str - String of pruned URL
+	'''
+	cut_chars = ['https://', 'http://', 'www.']
+    
+    for cut in cut_chars:
+        full_url = full_url.replace(cut, '')
+    
+    if full_url[-1] == '/':
+        pruned_url = full_url[0:-1]
+    else:
+        pruned_url = full_url
+    
+    return pruned_url
+
+
+
+def get_press_release_page(company_url:str):
+	'''
+	Finds 'press releases' landing page based off company's official website 
+	by searching Google.
+	Company's official URL can be found using medwatch's get_company_url().
+
+	e.g. get_press_release_page('https://www.astrazeneca.com/')
+		 returns 'https://www.astrazeneca.com/media-centre/press-releases.html'
+
+	Parameters:
+	-------------
+	company_url: str - String of company's official homepage
+
+	Returns:
+    -------------
+	pr_url: str - String of company's press releases landing page
+	'''
+
+	domain = prune_url(company_url) # Cleans up domain as full URL gave odd results
+	query = f'site:{domain} press releases' # Formats query
+	pr_url = search_google(query) # Searches Google and returns first result
+
+	return pr_url
+
+
+
+#########
+
+
+
+# MONITORING WEBPAGES
+
+
+
+def url_to_filename(base_url:str):
+	'''
+	Takes URL and replaces all unallowed Unix and Windows filename characters
+	so that some semblance of the URL can be used as part of a filename
+
+	e.g. url_to_filename('https://www.google.com/news/')
+		 returns 'google_com-news'
+
+	Parameters:
+	-------------
+	base_url: str - String of URL to be converted into a filename format
+
+	Returns:
+    -------------
+	filename_url: str - String of a filename based on a given URL
+	'''
+    
+    # Cuts fluff like 'http://' and 'www'
+    base_url = prune_url(base_url)
+    
+    # Covers both Windows and Unix
+    forbidden_ascii = ['/', '\\', '\|', ':', '?',
+                      '\'', '\"', '?', '*', '>', '<']
+    
+    for ascii_char in forbidden_ascii:
+        base_url = base_url.replace(ascii_char, '-')
+    
+    # Replaces '.' with '_' just in case there are file extension issues
+    filename_url = base_url.replace('.', '_')
+    
+    return filename_url
+
+
+
+def load_cache(base_url, path='logs/'):
+	'''
+	Finds CACHE html file associated with url and returns the html content as
+	as a string
+
+	Parameters:
+	-------------
+	base_url: str - Url of cached site
+	path: str = 'logs/' - Path CACHE files are located
+
+	Returns:
+    -------------
+    data_cach: str - Formatted html contents
+	'''
+
+	# Convert URL to filename and read contents
+    url_filename = url_to_filename(base_url)
+    
+    filename = f'{path}CACHE-{url_filename}.html'
+    f=open(filename, 'r')
+    data_cache = f.read()
+    
+    data_cache = " ".join(data_cache.split()) # Remove all whitespaces
+    
+    return data_cache
+
+
+
+def store_cache(base_url, data, path='logs/'):
+	'''
+	[Over]write stored snapshot/cache of a webpage's html contents
+
+	Parameters:
+	-------------
+	base_url: str - Url of site to be cached
+	data: str - Html content of the site
+	path: str = 'logs/' - Path where CACHE to be saved
+
+	Returns:
+    -------------
+    n/a
+	'''
+
+	# Convert URL to filename and write html content into that file
+    url_filename = url_to_filename(base_url)
+    filename = f'{path}CACHE-{url_filename}.html'
+    f = open(filename, 'w')
+    f.write(data)
+    f.close()
+                      
+
+
+def cache_updated(base_url, data, path='logs/'):
+    '''
+	Checks if new html data is different from old cached html data. If changes
+	found, return True, otherwise return False.	If cache not found, it creates 
+	a cache of the html page and returns False.
+
+	Parameters:
+	-------------
+	base_url: str - Url of site to be cached
+	data: str - Html content of the site
+	path: str = 'logs/' - Path where CACHE to be saved
+
+	Returns:
+    -------------
+	True or False - True if changes found, otherwise False (including if no 
+		cache found)
+
+    '''
+    
+    # Check cache exists
+    url_filename = url_to_filename(base_url)
+    filename = f'{path}CACHE-{url_filename}.html'
+    cache_exists = os.path.isfile(filename)
+    
+    # Yes: Compare new html data to cached html data
+    if cache_exists:
+    	#Opens cached html page
+        data_cache = load_cache(base_url, path=path)
+        f=open(filename, 'r')
+        data_cache = f.read()
+        
+        # Loads html content as BeautifulSoup object and extracts the <body>
+        soup_cache = BeautifulSoup(data_cache, 'html.parser')
+        body_cache = soup_cache.find('body')
+        soup_data = BeautifulSoup(data, 'html.parser')
+        body_data = soup_data.find('body')
+        
+        # Hashes content of the new and cached body contents 
+        # to make comparing more efficient
+        hash_cache = hash(str(body_cache))
+        hash_data = hash(str(body_data))
+        
+        # If cached and new data match, no updates detected, otherwise yes
+        if body_cache == body_data:
+            message = f'No update from {base_url} \n'
+            write_log(message, base_url, path=path)
+            return False
+        else:
+            message = f'Update detected from {base_url} \n'
+            write_log(message, base_url, path=path)
+            return True
+    
+    # No: Create cache of html data    
+    else:
+        message1 = f'No cached webpage found for {base_url} \n'
+        message2 = f'Initializing page in {filename} \n'
+        write_log(f'{message1}{message2}', base_url, path=path)
+        store_cache(base_url, data, path=path)
+        return False
+        
+        
+        
+def write_log(message:str, base_url, path='logs/'):
+	'''
+	Writes to a log txt file of any message you would like to record.
+
+	Parameters:
+	-------------
+	message: str - Message to be written to log
+	base_url: str - Url of site to be cached
+	path: str = 'logs/' - Path where LOG to be saved
+
+	Returns:
+	-------------
+	n/a
+	'''
+    print(message)
+    url_filename = url_to_filename(base_url)
+    filename = f'{path}LOG-{url_filename}.txt'
+    f = open(filename, 'a')
+    f.write(message)
+    f.close()
+
+
+
+def get_anchors(html_data):
+	'''
+	Takes BeautifulSoup object and searches <body> for anchors
+
+	Parameters:
+	-------------
+	html_data: bs4 - Html content of webpage
+
+	Returns:
+	-------------
+	anchors: list of bs4 - List of all anchors (including tags)
+	'''
+    
+    # If html_data does not have a <body>, assume the data passed if the <body>
+    if html_data.find('body') == None:
+        html_body = html_data
+    else:
+        html_body = html_data.find('body')   
+        
+    anchors = list(html_body.find_all('a'))
+
+    return anchors
+
+
+
+def parse_anchors(anchors):
+	'''
+	Takes list of anchors and returns the hrefs and content of each
+
+	Parameters:
+	-------------
+	anchors: list of bs4 - All anchors to be parsed
+
+	Returns:
+	-------------
+	hrefs: list of str - All href content found in each anchor
+	contents: list of str - All content/title found in each anchor
+	'''
+    hrefs = []
+    content = []
+    
+    for anchor in anchors:
+        hrefs.append(anchor.get('href'))
+        content.append(anchor.text)
+    
+    return hrefs, content
+
+
+
+def get_new_diff(new_data, old_data):
+	'''
+	Find what is new in new_data that cannot be found in old_data
+
+	Parameters:
+	-------------
+	new_data: list - e.g. list of anchors from newly pinged webpage
+	old_data: list - e.g. list of anchors from cached webpage
+
+	Returns:
+	-------------
+	diff: list - e.g. list of new anchors found
+	'''
+
+    diff = list(set(new_data) - set(old_data))
+    return diff
+
+
+
+##########
+
+
+
+# SYSTEM FUNCTIONS
+
+
+
+def now_hms():
+	'''
+	Get current time in HH:MM:SS format
+	**Plan to add timezones with pytz package
+
+	e.g. now_hms()
+		 returns '11:00:00'
+
+	Parameters:
+	-------------
+	n/a
+
+	Returns:
+	-------------
+	current_time: str - Current time in HH:MM:SS
+	'''
+
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return current_time
+
+
+
+def is_na(subject):
+	'''
+	Checks if input is NaN which may be in multiple formats including a string
+	('n/a', or 'NaN'), float, or boolean.
+
+	e.g. is_na('n/a') 		 returns True
+	     is_na(nan)	  		 returns True
+	     is_na(False) 	     returns True
+	     is_na(1234)  		 returns False
+	     is_na('google.com') returns False
+
+	Parameters:
+	-------------
+	subject: - Not type specific
+
+	Returns:
+	-------------
+	True/False
+	'''
+
+    if isinstance(subject, str):
+        na_versions = ['n/a', 'nan']
+        if subject.lower() in na_versions:
+            return True
+        else: 
+            return False
+    elif isinstance(subject, float):
+        if math.isnan(subject):
+            return True
+    elif isinstance(subject, bool):
+        return not subject
+    else:
+        return False
+
