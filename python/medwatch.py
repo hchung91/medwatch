@@ -98,6 +98,31 @@ def create_company_df(companies):
 
 
 
+def add_companies_to_csv(companies, filename):
+    '''
+    Generates a sub dataframe using create_company_df() and tacks that on to
+    the csv specified.
+    
+    Parameters:
+    -------------
+    companies: list of str - list of company names
+    filename: str - [path and] filename to csv to add data to
+
+    Returns:
+    -------------   
+    n/a
+    '''
+
+    df_add = create_company_df(companies)
+    df_old = pd.read_csv(filename)
+    frames = [df_old, df_add]
+    df = pd.concat(frames)
+    df = df.drop_duplicates()
+
+    df.to_csv(filename, index = False)
+
+
+
 def parse_who_companies(filename):
     '''
     Automatically parses csv of World Health Organization (WHO) COVID-19
