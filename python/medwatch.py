@@ -4,8 +4,11 @@ import time
 import math
 import requests
 import json
+import yaml
 import csv
 import hashlib
+import smtplib
+import ssl
 from datetime import datetime
 
 import pandas as pd
@@ -809,23 +812,50 @@ def check_for_keywords(anchors, keywords):
 
 
 
-def send_email_notification(message, receive_addresses, send_address):
+def send_email_notification(message, receive_addresses, sender_creds):
     '''
     Send an email to a list of recipients and log 
+    For now, the send address must be a gmail account
     
     Parameters:
     -------------
     message - String or possibly html content
     receive_addresses: list of str - email addresses of recipients
-    send_addrss: str - email address of sender
+    send_creds: str - filename of sender credentials
 
     Returns:
     -------------
     n/a
     '''
 
-    pass
+    sender_address, password = get_creds(sender_creds)
+    port = 465
+    smtp_server = "smtp.gmail.com"
+    
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+    
+    with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+        server.login(sender_address, password)
+        for receive_address in receive_addresses:
+            server.sendmail(send_address, receive_addresses, message)
 
+
+
+def get_listserv(filename):
+    params = yaml.safe_load(open(filename))
+    emails = params['emails']
+
+    return emails
+
+
+    
+def get_creds(filename):
+    params = yaml.safe_load(open(filename))
+    username = params['username']
+    password = params['password']
+
+    return username, password
 
 
 ##########
