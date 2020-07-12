@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import sys
 import time
@@ -9,7 +11,7 @@ import csv
 import hashlib
 import smtplib
 import ssl
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pandas as pd
 from bs4 import BeautifulSoup 
@@ -83,7 +85,7 @@ def create_company_df(companies):
         marketcaps.append(marketcap)
         sizes.append(size)
         urls.append(url)
-        urls_pr.append(url_pr)
+        urls_pr.append(url_pr[0])
 
     print('Search complete')
 
@@ -838,7 +840,7 @@ def send_email_notification(message, receive_addresses, sender_creds):
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(sender_address, password)
         for receive_address in receive_addresses:
-            server.sendmail(send_address, receive_addresses, message)
+            server.sendmail(sender_address, receive_addresses, message)
 
 
 
@@ -922,4 +924,48 @@ def is_na(subject):
         return not subject
     else:
         return False
+
+
+def gen_next_time(intervals, start_time=[6,0,0], end_time=[23,0,0]):
+    '''
+    Function that generates the next datetime based off a specified
+    interval
+
+    Parameters:
+    -------------
+    interval: float - number of seconds between start of next datetime
+    start_time: tuple of length 3 - (H, M, S)
+    end_time: tuple of length 3 - (H, M, S)
+
+    Yields:
+    -------------
+    next_datetime: datetime - 
+    '''
+    now = datetime.now()
+    year = now.year
+    month = now.month
+    day = now.day
+
+    start_time = datetime(year, month, day, 
+        start_time[0], start_time[1], start_time[2], 0)
+
+    end_time = datetime(year, month, day, 
+        end_time[0], end_time[1], end_time[2], 0)
+
+    next_datetime = start_time
+
+    while next_datetime < now:
+        next_datetime += timedelta(seconds=intervals)
+
+    yield next_datetime
+
+    while next_datetime < end_time:
+        next_datetime += timedelta(seconds=intervals) 
+        yield next_datetime
+
+
+
+
+
+
 

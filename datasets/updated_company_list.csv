@@ -1,31 +1,31 @@
 Company,Yahoo Listed Co.,Symbol,Exchange,Market Cap,Company Size,Is American,Home URL,Press Release URL
 Medicago Inc.,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-AstraZeneca,AstraZeneca PLC,AZN,NYSE,141856407552,large,Y,http://www.astrazeneca.com,['https://www.astrazeneca.com/media-centre/press-releases.html']
+AstraZeneca,AstraZeneca PLC,AZN,NYSE,139802329088,large,Y,http://www.astrazeneca.com,https://www.astrazeneca.com/media-centre/press-releases.html
 Cadila Healthcare Limited,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Beijing Institute of Biotechnology,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
- Takara Bio,Takara Bio Inc.,TKBIF,OTC Markets,n/a,n/a,N,http://www.takara-bio.com,['http://www.takara-bio.com/release/']
+ Takara Bio,Takara Bio Inc.,TKBIF,OTC Markets,n/a,n/a,N,http://www.takara-bio.com,http://www.takara-bio.com/release/
 Wuhan Institute of Biological Products,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Beijing Institute of Biological Products,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Sinovac,Sinovac Biotech Ltd.,SVA,NASDAQ,460249280,small,Y,http://www.sinovacbio.com,['http://www.sinovacbio.com/?optionid=754']
+Sinovac,Sinovac Biotech Ltd.,SVA,NASDAQ,460249280,small,Y,http://www.sinovacbio.com,http://www.sinovacbio.com/?optionid=754
 Gamaleya Research Institute,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Moderna,"Moderna, Inc.",MRNA,NASDAQ,22859974656,large,Y,http://www.modernatx.com,['https://investors.modernatx.com/news-releases/']
+Moderna,"Moderna, Inc.",MRNA,NASDAQ,23242334208,large,Y,http://www.modernatx.com,https://investors.modernatx.com/news-releases/
  Université Laval,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Walvax Biotech.,"Walvax Biotechnology Co., Ltd.",300142.SZ,Shenzhen,80039124992,large,N,http://www.walvax.com,['n/a']
-Inovio Pharmaceuticals,"Inovio Pharmaceuticals, Inc.",INO,NASDAQ,3708932096,medium,Y,http://www.inovio.com,['http://ir.inovio.com/news-releases/default.aspx']
-BioNTech,BioNTech SE,BNTX,NASDAQ,15321255936,large,Y,http://www.biontech.de,['https://investors.biontech.de/press-releases/']
+Walvax Biotech.,"Walvax Biotechnology Co., Ltd.",300142.SZ,Shenzhen,89156149248,large,N,http://www.walvax.com,n/a
+Inovio Pharmaceuticals,"Inovio Pharmaceuticals, Inc.",INO,NASDAQ,3696284416,medium,Y,http://www.inovio.com,http://ir.inovio.com/news-releases/default.aspx
+BioNTech,BioNTech SE,BNTX,NASDAQ,15956241408,large,Y,http://www.biontech.de,https://investors.biontech.de/press-releases/
 NIAID,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-GSK,GlaxoSmithKline plc,GSK,NYSE,102244106240,large,Y,http://www.gsk.com,['https://www.gsk.com/en-gb/media/press-releases/']
+GSK,GlaxoSmithKline plc,GSK,NYSE,99641303040,large,Y,http://www.gsk.com,https://www.gsk.com/en-gb/media/press-releases/
 Vaxine Pty Ltd,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Medytox,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Clover Biopharmaceuticals Inc.,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 CanSino Biological Inc.,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Curevac,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Pfizer,Pfizer Inc.,PFE,NYSE,187475509248,large,Y,http://www.pfizer.com,['https://www.pfizer.com/news/press-release/press-releases-archive']
-Sinopharm,"Sinopharm Group Co., Ltd.",SHTDY,OTC Markets,8020237312,medium,N,http://www.sinopharmgroup.com.cn,['http://ir.sinopharmgroup.com.cn/']
+Pfizer,Pfizer Inc.,PFE,NYSE,187919908864,large,Y,http://www.pfizer.com,https://www.pfizer.com/news/press-release/press-releases-archive
+Sinopharm,"Sinopharm Group Co., Ltd.",SHTDY,OTC Markets,8038292992,medium,N,http://www.sinopharmgroup.com.cn,http://ir.sinopharmgroup.com.cn/
 Anhui Zhifei Longcom Biopharmaceutical,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Dynavax,Dynavax Technologies Corporation,DVAX,NASDAQ,1024858304,small,Y,http://www.dynavax.com,['http://investors.dynavax.com/press-releases']
-Novavax,"Novavax, Inc.",NVAX,NASDAQ,5769010688,medium,Y,http://www.novavax.com,['https://ir.novavax.com/press-releases']
- AnGes,"AnGes, Inc.",AMGXF,OTC Markets,n/a,n/a,N,http://www.anges.co.jp,['https://www.anges.co.jp/en/news/index.php']
+Dynavax,Dynavax Technologies Corporation,DVAX,NASDAQ,942173312,small,Y,http://www.dynavax.com,http://investors.dynavax.com/press-releases
+Novavax,"Novavax, Inc.",NVAX,NASDAQ,5537780736,medium,Y,http://www.novavax.com,https://ir.novavax.com/press-releases
+ AnGes,"AnGes, Inc.",AMGXF,OTC Markets,n/a,n/a,N,http://www.anges.co.jp,https://www.anges.co.jp/en/news/index.php
  International Vaccine Institute,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Fosun Pharma,"Shanghai Fosun Pharmaceutical (Group) Co., Ltd.",SFOSF,OTC Markets,12142632960,large,N,http://www.fosunpharma.com,['https://www.fosunpharma.com/en/news/mediaReports.html']
+Fosun Pharma,"Shanghai Fosun Pharmaceutical (Group) Co., Ltd.",SFOSF,OTC Markets,12300502016,large,N,http://www.fosunpharma.com,https://www.fosunpharma.com/en/news/groupNews.html
 Genexine Consortium,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
