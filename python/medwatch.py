@@ -774,7 +774,7 @@ def load_keywords_csv(filename:str):
     return keywords
 
 
-def check_for_keywords(anchors, keywords):
+def check_for_keywords(anchors, keywords, keywords_ignore = ''):
     '''
     Takes a list of anchors and returns a subset of anchors in which a keyword
     was found.
@@ -783,6 +783,7 @@ def check_for_keywords(anchors, keywords):
     -------------
     anchors: list - Anchor tags of interest
     keywords: list - Keywords to search in anchor tags
+    keywords_ignore: list - Keywords to mark anchor is not relevant if present
 
     Returns:
     -------------
@@ -804,11 +805,19 @@ def check_for_keywords(anchors, keywords):
         href = href.lower()
         content = content.lower()
 
+        # Check if href or content contain any of the keywords
         href_kw = any(map(href.__contains__, keywords))
         content_kw = any(map(content.__contains__, keywords))
 
-        if href_kw or content_kw:
-            rel_anchors.append(anchor)
+        # Check if any of the "ignore keywords" exist
+        href_kwi = any(map(href.__contains__, keywords_ignore))
+        content_kwi = any(map(href.__contains__, keywords_ignore))
+
+        if (href_kw or content_kw): 
+            if (href_kwi or content_kwi):
+                print('Relevant keywords found but not added due to ignore keywords.')
+            else:
+                rel_anchors.append(anchor)
 
     return rel_anchors
 
