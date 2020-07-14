@@ -641,18 +641,18 @@ def cache_updated(base_url, data, path='logs/'):
         
         # If cached and new data match, no updates detected, otherwise yes
         if body_cache == body_data:
-            message = f'No update from {base_url} \n'
+            message = f'[{now_hms()}] No update from {base_url} \n'
             write_log(message, base_url, path=path)
             return False
         else:
-            message = f'Update detected from {base_url} \n'
+            message = f'[{now_hms()}] Update detected from {base_url} \n'
             write_log(message, base_url, path=path)
             return True
     
     # No: Create cache of html data    
     else:
-        message1 = f'No cached webpage found for {base_url} \n'
-        message2 = f'Initializing page in {filename} \n'
+        message1 = f'[{now_hms()}] No cached webpage found for {base_url} \n'
+        message2 = f'[{now_hms()}] Initializing page in {filename} \n'
         write_log(f'{message1}{message2}', base_url, path=path)
         store_cache(base_url, data, path=path)
         return False
@@ -849,7 +849,7 @@ def send_email_notification(message, receive_addresses, sender_creds):
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(sender_address, password)
         for receive_address in receive_addresses:
-            server.sendmail(sender_address, receive_addresses, message)
+            server.sendmail(sender_address, receive_address, message)
 
 
 
