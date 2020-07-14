@@ -30,13 +30,24 @@ year = now.year
 month = now.month
 day = now.day
 
+if now < datetime(year,month,day,6,00):
+    print('Will start at 6am EST')
+    pause.until(datetime(year,month,day,6,00))
+
 print(f'Beginning {now}')
 while now < datetime(year,month,day,23,00):
     pause.until(next(time_gen))
     
     email_msg = []
+    email_companies = []
+
     df = pd.read_csv(company_file)
     df = df.drop_duplicates()
+    
+    # cos = df['Company'].tolist()
+    # ycos = df['Yahoo Listed Co.'].tolist()
+    # syms = df['Symbols'].tolist()
+    # pr_urls = df['Press Release URL'].tolist()
 
     keywords = mw.load_keywords_csv(keywords_dir)
 
@@ -93,6 +104,7 @@ while now < datetime(year,month,day,23,00):
                     rel_hrefs, rel_contents = mw.parse_anchors(rel_anchors)
 
                     if len(rel_anchors) > 0:
+                        email_companies.append(co)
                         email_msg.append(f'\n[{current_time}] {yco} - {url_pr}')
                         email_msg.append('------------------------')
                         message=f'Links related to {keywords}:'
@@ -101,7 +113,7 @@ while now < datetime(year,month,day,23,00):
                         for rel_href, rel_content in zip(rel_hrefs, rel_contents):
                             message=f'{rel_content} :: {rel_href}'
                             email_msg.append(message)
-                            mw.write_log(message)
+                            mw.write_log(message, url_pr)
 
                     else:
                         message=f'New links not related to {keywords}\n'
@@ -130,9 +142,11 @@ while now < datetime(year,month,day,23,00):
         receive_addresses = mw.get_listserv(listserv_dir)
 
         email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
-        email_msg.insert(0, f'Subject: Medwatch has detected a relevant update \n\n')
+        
+        email_companies = ', '.join(email_companies)
+        email_msg.insert(0, f'Subject: Medwatch update from {email_companies} [{mw.now_hms()}]\n\n')
 
-        email_msg = '\n'.join(email_msg)
+        email_msg = u'\n'.join(email_msg).encode('utf-8')
 
         mw.send_email_notification(email_msg, receive_addresses, sendercreds_dir)
 

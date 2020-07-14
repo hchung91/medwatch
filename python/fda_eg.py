@@ -38,16 +38,22 @@ year = now.year
 month = now.month
 day = now.day
 
+if now < datetime(year,month,day,6,00):
+    print('Will start at 6am EST')
+    pause.until(datetime(year,month,day,6,00))
+
 print(f'[{now}] Beginning government organization check')
 while now < datetime(year,month,day,23,00):
     pause.until(next(time_gen))
 
     email_msg = []
+    email_organizations = []
+
     keywords = mw.load_keywords_csv(keywords_dir)
 
     for org, url, kw_ignore in zip(organizations, gov_urls, keywords_ignore):       
         print('\n----------------------------------')
-        print(f'Checking {org}')
+        print(f'[{mw.now_hms()}] Checking {org}')
 
         try:
             r = requests.get(url, headers=headers)
@@ -84,25 +90,26 @@ while now < datetime(year,month,day,23,00):
             diff_hrefs, diff_contents = mw.parse_anchors(diff_anchors)
             
             if len(diff_anchors) > 0:
-                message = f'[{current_time}] New links found: \n---------------'
+                message = f'[{current_time}] New links found: \n---------------\n'
                 mw.write_log(message, url)
 
                 rel_anchors = mw.check_for_keywords(diff_anchors, keywords, keywords_ignore = kw_ignore)
                 rel_hrefs, rel_contents = mw.parse_anchors(rel_anchors)
 
                 if len(rel_anchors) > 0:
+                    email_companies.append(org)
                     email_msg.append(f'\n[{current_time}] {org} - {url}')
                     email_msg.append('------------------------')
-                    message=f'Links related to {keywords}:'
+                    message=f'Links related to {keywords}:\n'
                     mw.write_log(message, url)
                     
                     for rel_href, rel_content in zip(rel_hrefs, rel_contents):
                         message=f'{rel_content} :: {rel_href}'
                         email_msg.append(message)
-                        mw.write_log(message)
+                        mw.write_log(message, url)
 
                 else:
-                    message=f'New links not related to {keywords}\n'
+                    message=f'[{current_time}] New links not related to {keywords}\n'
                     mw.write_log(message,url)
 
                     for diff_href, diff_content in zip(diff_hrefs, diff_contents):
@@ -124,9 +131,11 @@ while now < datetime(year,month,day,23,00):
         receive_addresses = mw.get_listserv(listserv_dir)
 
         email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
-        email_msg.insert(0, f'Subject: Medwatch has detected a relevant update \n\n')
+        
+        email_organizations = ', '.join(email_organizations)
+        email_msg.insert(0, f'Subject: Medwatch update from {email_companies} [{mw.now_hms()}]\n\n')
 
-        email_msg = '\n'.join(email_msg)
+        email_msg = u'\n'.join(email_msg).encode('utf-8')
 
         mw.send_email_notification(email_msg, receive_addresses, sendercreds_dir)
 

@@ -1,6 +1,6 @@
 Company,Yahoo Listed Co.,Symbol,Exchange,Market Cap,Company Size,Is American,Home URL,Press Release URL
 Medicago Inc.,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-AstraZeneca,AstraZeneca PLC,AZN,NYSE,139802329088,large,Y,http://www.astrazeneca.com,https://www.astrazeneca.com/media-centre/press-releases.html
+AstraZeneca,AstraZeneca PLC,AZN,NYSE,1.39802E+11,large,Y,http://www.astrazeneca.com,https://www.astrazeneca.com/media-centre/press-releases.html
 Cadila Healthcare Limited,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Beijing Institute of Biotechnology,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
  Takara Bio,Takara Bio Inc.,TKBIF,OTC Markets,n/a,n/a,N,http://www.takara-bio.com,http://www.takara-bio.com/release/
@@ -20,7 +20,7 @@ Medytox,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Clover Biopharmaceuticals Inc.,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 CanSino Biological Inc.,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Curevac,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
-Pfizer,Pfizer Inc.,PFE,NYSE,187919908864,large,Y,http://www.pfizer.com,https://www.pfizer.com/news/press-release/press-releases-archive
+Pfizer,Pfizer Inc.,PFE,NYSE,1.8792E+11,large,Y,http://www.pfizer.com,https://investors.pfizer.com/investor-news/default.aspx
 Sinopharm,"Sinopharm Group Co., Ltd.",SHTDY,OTC Markets,8038292992,medium,N,http://www.sinopharmgroup.com.cn,http://ir.sinopharmgroup.com.cn/
 Anhui Zhifei Longcom Biopharmaceutical,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a
 Dynavax,Dynavax Technologies Corporation,DVAX,NASDAQ,942173312,small,Y,http://www.dynavax.com,http://investors.dynavax.com/press-releases
