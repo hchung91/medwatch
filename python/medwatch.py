@@ -495,7 +495,8 @@ def get_press_release_page(company_url:str):
     '''
     print(f'Searching for press release page on {company_url}')
     domain = prune_url(company_url) # Cleans up domain as full URL gave odd results
-    query = f'site:{domain} press releases' # Formats query
+    # query = f'site:{domain} press releases' # Formats query
+    query = f'site:{domain} investor news' # Formats query
     pr_url = search_google(query) # Searches Google and returns first result
     print(f'Found: {pr_url}')
     print('-------------------------------------\n')
@@ -867,6 +868,143 @@ def get_creds(filename):
     password = params['password']
 
     return username, password
+
+
+
+def href_to_link(href, domains=['']):
+    '''
+    Takes href and checks if the link is valid. If not, it will
+    cycle through a list of base_urls to see if any yield a 
+    '''
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+
+    href = href.strip()
+
+    if domains[0] != '':
+        domains.insert(0, '')
+
+    for domain in domains:
+        temp_url = merge_link(domain, href)
+        temp_url = add_protocol(temp_url)
+
+        if not '.' in temp_url:
+            continue
+
+        try:
+            r = requests.get(temp_url, headers = headers)
+            if r.status_code == 200:
+                return temp_url
+        except:
+            print(f'{temp_url} failed')
+            
+
+        try:
+            print(switch_protocol(temp_url))
+            r = requests.get(switch_protocol(temp_url), headers = headers)
+            if r.status_code == 200:
+                return switch_protocol(temp_url)
+        except:
+            print(f'{switch_protocol(temp_url)} failed')
+            pass
+
+    return href
+
+
+
+
+
+def merge_link(url_domain, url_path):
+    '''
+    Combines a url base and extension, taking into consideration
+    the number of slashes
+
+    e.g. merge_link('reddit.com/', '/r/nba') 
+         merge_link('reddit.com', 'r/nba')
+         merge_link('reddit.com/', 'r/nba')
+         merge_link('reddit.com', 'r/nba')
+         all return 'reddit.com/r/nba'
+    
+    Parameters:
+    -------------
+    url_domain: str - [Sub]domain name
+    url_path: str - Portion after domain
+
+    Returns:
+    -------------
+    url_full: str - Combined URL
+    '''
+
+    # Ensure domain is not empty
+    if url_domain.strip() == '':
+        return url_path
+
+    # Strip / at end of domain
+    if url_domain[-1] == '/':
+        url_domain = url_domain[0:-1]
+
+    # Strip / at beginning of path
+    if url_path[0] == '/':
+        url_path = url_path[1:]
+
+    url_full = '/'.join([url_domain, url_path])
+
+    return url_full
+
+
+
+def add_protocol(url, protocol='https://'):
+    '''
+    Checks if http:// or https:// protocol is defined
+    if not, adds https:// by default
+
+    e.g. add_protocol('reddit.com')
+         returns 'https://reddit.com'
+
+    Parameters:
+    -------------
+    url: str - Given URL
+    protocol: str - Defaults to https://, can specify http://
+
+    Returns:
+    -------------
+    url: str - URL with protocol
+    '''
+
+    if url.strip()[0:4] != 'http':
+        url = ''.join([protocol, url])
+
+    return url
+
+
+
+def switch_protocol(url):
+    '''
+    Switches https:// to http:// and vice versa
+
+    e.g. switch_protocol('http://www.reddit.com')
+         returns 'https://www.reddit.com'
+         switch_protocol('http://www.reddit.com')
+         returns 'https://www.reddit.com'
+    
+    Parameters:
+    -------------
+    url: str - Given URL
+
+    Returns:
+    -------------
+    url: str - URL with new protocol
+    '''
+
+    if url[0:8] == 'https://':
+        url = ''.join(['http://',url[8:]])
+    elif url[0:7] == 'http://':
+        url = ''.join(['https://',url[7:]])
+    else:
+        print('http:// or https:// protocol not found')
+    
+    return url
+
 
 
 ##########
