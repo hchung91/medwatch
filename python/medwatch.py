@@ -592,7 +592,7 @@ def store_cache(base_url, data, path='logs/'):
     # Convert URL to filename and write html content into that file
     url_filename = url_to_filename(base_url)
     filename = f'{path}CACHE-{url_filename}.html'
-    f = open(filename, 'w')
+    f = open(filename, 'w+')
     f.write(data)
     f.close()
                       
@@ -677,7 +677,13 @@ def write_log(message:str, base_url, path='logs/'):
     print(message)
     url_filename = url_to_filename(base_url)
     filename = f'{path}LOG-{url_filename}.txt'
-    f = open(filename, 'a')
+
+    if os.path.exists(filename):
+        append_write = 'a' 
+    else:
+        append_write = 'w'
+
+    f = open(filename, append_write)
     f.write(message)
     f.close()
 
