@@ -1101,6 +1101,10 @@ def gen_next_time(intervals, start_time=[6,0,0], end_time=[23,0,0]):
 
     next_datetime = start_time
 
+    if end_time < now:
+        end_time += timedelta(days=1)
+
+
     while next_datetime < now:
         next_datetime += timedelta(seconds=intervals)
 
