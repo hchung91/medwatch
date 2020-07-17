@@ -781,7 +781,7 @@ def load_keywords_csv(filename:str):
     return keywords
 
 
-def check_for_keywords(anchors, keywords, keywords_ignore = ''):
+def check_for_keywords(anchors, keywords, keywords_ignore = ['']):
     '''
     Takes a list of anchors and returns a subset of anchors in which a keyword
     was found.
@@ -809,6 +809,9 @@ def check_for_keywords(anchors, keywords, keywords_ignore = ''):
 
     rel_anchors = []
     for anchor, href, content in zip(anchors, hrefs, contents):
+        if href == None:
+            continue
+            
         href = href.lower()
         content = content.lower()
 
