@@ -1114,14 +1114,16 @@ def gen_next_time(intervals, start_time=[6,0,0], end_time=[23,0,0]):
         end_time += timedelta(days=1)
 
 
-    while next_datetime < now:
-        next_datetime += timedelta(seconds=intervals)
-
-    yield next_datetime
-
     while next_datetime < end_time:
-        next_datetime += timedelta(seconds=intervals) 
+
+        if next_datetime < now:
+            while next_datetime < now:
+                next_datetime += timedelta(seconds=intervals)
+        else:
+            next_datetime += timedelta(seconds=intervals)
+            
         yield next_datetime
+
 
 
 
