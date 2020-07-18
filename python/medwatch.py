@@ -901,7 +901,7 @@ def href_to_link(href, domains=['']):
             continue
 
         try:
-            r = requests.get(temp_url, headers = headers)
+            r = requests.head(temp_url, headers = headers)
             if r.status_code == 200:
                 return temp_url
         except:
@@ -1121,7 +1121,7 @@ def gen_next_time(intervals, start_time=[6,0,0], end_time=[23,0,0]):
                 next_datetime += timedelta(seconds=intervals)
         else:
             next_datetime += timedelta(seconds=intervals)
-            
+
         yield next_datetime
 
 
