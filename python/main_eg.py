@@ -32,10 +32,16 @@ while True:
     month = now.month
     day = now.day
 
-    if now < datetime(year,month,day,6,00):
-        print('Will start at 6am EST')
-        pause.until(datetime(year,month,day,6,00))
+    starttime = datetime(year, month, day, 6, 0)
 
+    if now.hour >= 23:
+        starttime = starttime + timedelta(days = 1)
+
+    if now < starttime:
+        print(f'Will start at {starttime} EST')
+        pause.until(starttime)
+
+    now = datetime.now()
     print(f'Beginning {now}')
     while now < datetime(year,month,day,23,00):
         time_check = next(time_gen)
@@ -89,7 +95,7 @@ while True:
                 has_update = mw.cache_updated(url_pr, page)
                 current_time = mw.now_hms()
                 
-                print(has_update)
+                # print(has_update)
                 print('\n')
              
                 if has_update:
@@ -98,29 +104,33 @@ while True:
                     old_body = old_soup.find('body')
                     old_anchors = mw.get_anchors(old_soup)
                     diff_anchors = mw.get_new_diff(anchors, old_anchors)
-                    diff_hrefs, diff_contents = mw.parse_anchors(diff_anchors)
                     
                     if len(diff_anchors) > 0:
+                        diff_hrefs, diff_contents = mw.parse_anchors(diff_anchors)
                         message = f'[{current_time}] New links found: \n---------------'
                         mw.write_log(message, url_pr)
 
-                        rel_anchors = mw.check_for_keywords(diff_anchors, keywords)
+                        rel_anchors, rel_keywords = mw.check_for_keywords(diff_anchors, keywords)
                         rel_hrefs, rel_contents = mw.parse_anchors(rel_anchors)
 
                         if len(rel_anchors) > 0:
                             email_companies.append(co)
                             email_msg.append(f'\n[{current_time}] {yco} - {url_pr}')
                             email_msg.append('------------------------')
-                            message=f'Links related to {keywords}:'
+                            all_keywords_found = set([item for sublist in rel_keywords for item in sublist if item != ''])
+                            message=f'Links related to {', '.join(all_keywords_found)}:'
                             mw.write_log(message, url_pr)
                             
-                            for rel_href, rel_content in zip(rel_hrefs, rel_contents):
-                                message=f'{rel_content} :: {rel_href}'
+                            for rel_href, rel_content, anchor_keywords in zip(rel_hrefs, rel_contents, rel_keywords):
+                                message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, url_home])}'
+                                email_msg.append(message)
+                                mw.write_log(message, url_pr)
+                                message=f'Link marked because of keywords: {', '.join(anchor_keywords)}'
                                 email_msg.append(message)
                                 mw.write_log(message, url_pr)
 
                         else:
-                            message=f'New links not related to {keywords}\n'
+                            message=f'New links NOT related to {keywords}\n'
                             mw.write_log(message,url_pr)
 
                             for diff_href, diff_content in zip(diff_hrefs, diff_contents):
@@ -144,8 +154,7 @@ while True:
 
         if len(email_msg) > 0:
             receive_addresses = mw.get_listserv(listserv_dir)
-
-            email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
+            email_msg.insert(0, f'New links related to the following keywords have been detected! \n{', '.join(all_keywords_found)}\n')
             
             email_companies = ', '.join(email_companies)
             email_msg.insert(0, f'Subject: Medwatch update from {email_companies} [{mw.now_hms()}]\n\n')

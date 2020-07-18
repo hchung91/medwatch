@@ -808,6 +808,7 @@ def check_for_keywords(anchors, keywords, keywords_ignore = ['']):
     hrefs, contents = parse_anchors(anchors)
 
     rel_anchors = []
+    rel_keywords_all = []
     for anchor, href, content in zip(anchors, hrefs, contents):
         if href == None:
             continue
@@ -823,13 +824,27 @@ def check_for_keywords(anchors, keywords, keywords_ignore = ['']):
         href_kwi = any(map(href.__contains__, keywords_ignore))
         content_kwi = any(map(href.__contains__, keywords_ignore))
 
+        rel_keywords = []
         if (href_kw or content_kw): 
             if (href_kwi or content_kwi):
                 print('Relevant keywords found but not added due to ignore keywords.')
+
             else:
                 rel_anchors.append(anchor)
 
-    return rel_anchors
+                for keyword in keywords:
+                    if next(href_kw) or next(content_kw):
+                        rel_keywords.append(keyword)
+
+                print(f'Match because of following keywords: {rel_keywords}')
+
+        if not rel_keywords:
+            rel_keywords = ['']
+            
+        rel_keywords_all.append(rel_keywords)
+
+    return rel_anchors, rel_keywords_all
+
 
 
 

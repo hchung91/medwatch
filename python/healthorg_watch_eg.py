@@ -103,18 +103,23 @@ while True:
                     message = f'[{current_time}] New links found: \n---------------\n'
                     mw.write_log(message, url)
 
-                    rel_anchors = mw.check_for_keywords(diff_anchors, keywords, keywords_ignore = kw_ignore)
+                    rel_anchors, rel_keywords = mw.check_for_keywords(diff_anchors, keywords, keywords_ignore = kw_ignore)
                     rel_hrefs, rel_contents = mw.parse_anchors(rel_anchors)
 
                     if len(rel_anchors) > 0:
                         email_organizations.append(org)
                         email_msg.append(f'\n[{current_time}] {org} - {url}')
                         email_msg.append('------------------------')
-                        message=f'Links related to {keywords}:\n'
+                        
+                        all_keywords_found = set([item for sublist in rel_keywords for item in sublist if item != ''])
+                        message=f'Links related to {', '.join(all_keywords_found)}:'
                         mw.write_log(message, url)
                         
-                        for rel_href, rel_content in zip(rel_hrefs, rel_contents):
-                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url, domain])}'
+                        for rel_href, rel_content, anchor_keywords in zip(rel_hrefs, rel_contents, rel_keywords):
+                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, url_home])}'
+                            email_msg.append(message)
+                            mw.write_log(message, url)
+                            message=f'Link marked because of keywords: {', '.join(anchor_keywords)}'
                             email_msg.append(message)
                             mw.write_log(message, url)
 
