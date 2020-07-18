@@ -118,14 +118,17 @@ while True:
                             email_msg.append(f'\n[{current_time}] {yco} - {url_pr}')
                             email_msg.append('------------------------')
                             all_keywords_found = set([item for sublist in rel_keywords for item in sublist if item != ''])
-                            message=f'Links related to {', '.join(all_keywords_found)}:'
+                            
+                            keywords_found = ', '.join(all_keywords_found)
+                            message=f'Links related to {keywords_found}:'
                             mw.write_log(message, url_pr)
                             
                             for rel_href, rel_content, anchor_keywords in zip(rel_hrefs, rel_contents, rel_keywords):
                                 message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, url_home])}'
                                 email_msg.append(message)
                                 mw.write_log(message, url_pr)
-                                message=f'Link marked because of keywords: {', '.join(anchor_keywords)}'
+                                tmp_list = ', '.join(anchor_keywords)
+                                message=f'Link marked because of keywords: {tmp_list}'
                                 email_msg.append(message)
                                 mw.write_log(message, url_pr)
 
@@ -154,7 +157,8 @@ while True:
 
         if len(email_msg) > 0:
             receive_addresses = mw.get_listserv(listserv_dir)
-            email_msg.insert(0, f'New links related to the following keywords have been detected! \n{', '.join(all_keywords_found)}\n')
+            tmp_list = ', '.join(all_keywords_found)
+            email_msg.insert(0, f'New links related to the following keywords have been detected! \n{tmp_list}\n')
             
             email_companies = ', '.join(email_companies)
             email_msg.insert(0, f'Subject: Medwatch update from {email_companies} [{mw.now_hms()}]\n\n')
