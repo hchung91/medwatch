@@ -820,6 +820,10 @@ def check_for_keywords(anchors, keywords, keywords_ignore = ['']):
         href_kw = any(map(href.__contains__, keywords))
         content_kw = any(map(content.__contains__, keywords))
 
+        # Can combine with above?
+        href_gen = map(href.__contains__, keywords)
+        content_gen = map(content.__contains__, keywords)
+
         # Check if any of the "ignore keywords" exist
         href_kwi = any(map(href.__contains__, keywords_ignore))
         content_kwi = any(map(href.__contains__, keywords_ignore))
@@ -833,7 +837,7 @@ def check_for_keywords(anchors, keywords, keywords_ignore = ['']):
                 rel_anchors.append(anchor)
 
                 for keyword in keywords:
-                    if next(href_kw) or next(content_kw):
+                    if next(href_gen) or next(content_gen):
                         rel_keywords.append(keyword)
 
                 print(f'Match because of following keywords: {rel_keywords}')
