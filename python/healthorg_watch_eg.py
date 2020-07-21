@@ -117,7 +117,7 @@ while True:
                         mw.write_log(message, url)
                         
                         for rel_href, rel_content, anchor_keywords in zip(rel_hrefs, rel_contents, rel_keywords):
-                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, url_home])}'
+                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url, domain])}'
                             email_msg.append(message)
                             mw.write_log(message, url)
                             tmp_list = ', '.join(anchor_keywords)
