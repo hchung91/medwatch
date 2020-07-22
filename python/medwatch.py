@@ -463,7 +463,7 @@ def prune_url(full_url: str):
     -------------
     pruned_url: str - String of pruned URL
     """
-    cut_chars = ["https://", "http://", "www."]
+    cut_chars = ["https://", "http://"]
 
     for cut in cut_chars:
         full_url = full_url.replace(cut, "")
