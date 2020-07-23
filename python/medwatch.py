@@ -447,12 +447,12 @@ def search_google(query, num_results=1):
     return results
 
 
-def prune_url(full_url: str):
+def prune_url(full_url: str, cut_chars=[]):
     """
     Method to clean up domain (e.g. removes www. or http://)
     Found having full URL can yield odd Google searches
 
-    e.g. prune_url('https://www.google.com/')
+    e.g. prune_url('https://www.google.com/', cut_chars=['https://', 'www.'])
          returns 'google.com'
 
     Parameters:
@@ -463,7 +463,8 @@ def prune_url(full_url: str):
     -------------
     pruned_url: str - String of pruned URL
     """
-    cut_chars = ["https://", "http://"]
+
+    # cut_chars = ["https://", "http://", "www."]
 
     for cut in cut_chars:
         full_url = full_url.replace(cut, "")
@@ -494,7 +495,9 @@ def get_press_release_page(company_url: str):
     pr_url: str - String of company's press releases landing page
     """
     print(f"Searching for press release page on {company_url}")
-    domain = prune_url(company_url)  # Cleans up domain as full URL gave odd results
+    domain = prune_url(
+        company_url, cut_chars=["https://", "http://", "www."]
+    )  # Cleans up domain as full URL gave odd results
     # query = f'site:{domain} press releases' # Formats query
     query = f"site:{domain} investor news"  # Formats query
     pr_url = search_google(query)  # Searches Google and returns first result
@@ -526,8 +529,8 @@ def url_to_filename(base_url: str):
     filename_url: str - String of a filename based on a given URL
     """
 
-    # Cuts fluff like 'http://' and 'www'
-    base_url = prune_url(base_url)
+    # Cuts fluff like 'http://' ~and 'www'~
+    base_url = prune_url(base_url, cut_chars=["https://", "http://", "www."])
 
     # Covers both Windows and Unix
     forbidden_ascii = ["/", "\\", "\|", ":", "?", "'", '"', "?", "*", ">", "<"]
@@ -1076,6 +1079,29 @@ def is_na(subject):
         return False
 
 
+def gen_start_end_times(start_time=[6, 0, 0], end_time=[23, 0, 0]):
+    """
+    Determines what the next start and end times should be based of current time.
+    """
+
+    now = datetime.now()
+    year = now.year
+    month = now.month
+    day = now.day
+
+    start_time = datetime(
+        year, month, day, start_time[0], start_time[1], start_time[2], 0
+    )
+
+    end_time = datetime(year, month, day, end_time[0], end_time[1], end_time[2], 0)
+
+    if end_time < now:
+        end_time += timedelta(days=1)
+        start_time += timedelta(days=1)
+
+    return start_time, end_time
+
+
 def gen_next_time(intervals, start_time=[6, 0, 0], end_time=[23, 0, 0]):
     """
     Function that generates the next datetime based off a specified
@@ -1096,16 +1122,11 @@ def gen_next_time(intervals, start_time=[6, 0, 0], end_time=[23, 0, 0]):
     month = now.month
     day = now.day
 
-    start_time = datetime(
-        year, month, day, start_time[0], start_time[1], start_time[2], 0
+    starttime, endtime = mw.gen_start_end_times(
+        start_time=start_time, end_time=end_time
     )
 
-    end_time = datetime(year, month, day, end_time[0], end_time[1], end_time[2], 0)
-
     next_datetime = start_time
-
-    if end_time < now:
-        end_time += timedelta(days=1)
 
     while next_datetime < end_time:
 
