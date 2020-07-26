@@ -11,6 +11,7 @@ import csv
 import hashlib
 import smtplib
 import ssl
+import pickle
 from datetime import datetime, timedelta
 
 import pandas as pd
@@ -579,7 +580,7 @@ def store_cache(base_url, data, path="logs/"):
     -------------
     base_url: str - Url of site to be cached
     data: str - Html content of the site
-    path: str = 'logs/' - Path where CACHE to be saved
+    path: str - 'logs/' - Path where CACHE to be saved
 
     Returns:
     -------------
@@ -592,6 +593,35 @@ def store_cache(base_url, data, path="logs/"):
     f = open(filename, "w+")
     f.write(data)
     f.close()
+
+
+def store_anchors(base_url, anchors, path="logs/"):
+    """
+    Append to a list of relevant anchors for a given URL
+
+    Parameters:
+    -------------
+    base_url: str - Url of site to be cached
+    data: str - new anchors to add
+    path: str - 'logs/' - Path where ANCHORS to be saved
+
+    Returns:
+    -------------
+    n/a
+    """
+
+    url_filename = url_to_filename(base_url)
+    filename = f"{path}ANCHORS-{url_filename}.txt"
+
+    if os.path.isfile(filename):
+        with open(filename, "rb") as fp:
+            all_anchors = pickle.load(fp)
+        all_anchors.append(anchors)
+    else:
+        all_anchors = anchors
+
+    with open(filename, "wb") as fp:
+        pickle.dump(all_anchors, fp)
 
 
 def cache_updated(base_url, data, path="logs/"):
