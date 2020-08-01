@@ -1,6 +1,7 @@
 # Directories
 medwatch_notes/Meetings
 medwatch_notes/Notes
+.idea
 
 # Temp files
 *checkpoint.ipynb

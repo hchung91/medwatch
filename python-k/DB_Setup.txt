@@ -1,0 +1,11 @@
+To setup db
+1) run "docker-compose up -d" in this directory
+2) run "alembic upgrade head" to migrate tables
+3) db connection string: mysql://root:password@127.0.0.1/db
+4) you can connect to db on localhost:3306, credentials in docker-compose.yml file
+
+
+to delete db:
+1) run "docker-compose down -v" in this directory
+
+
