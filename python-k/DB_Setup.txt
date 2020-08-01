@@ -9,3 +9,7 @@ to delete db:
 1) run "docker-compose down -v" in this directory
 
 
+after changing data_model/model.py:
+1) run alembic revision --autogenerate -m "description of change here"
+
+
