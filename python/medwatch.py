@@ -760,6 +760,33 @@ def parse_anchors(anchors):
     return hrefs, content
 
 
+
+def parse_anchor(anchor):
+    """
+    Returns the href and content of an anchor
+
+    Parameters:
+    -------------
+    anchor: bs4 anchor object
+
+    Returns:
+    -------------
+    href: str - href content found in anchor
+    content: str - Content/title found in anchor
+    """
+    
+    href = anchor.get("href")
+    content = anchor.text
+    
+    if href == None:
+        href = ''
+        
+    if content == None:
+        content == ''
+        
+    return href, content
+
+
 def get_new_diff(new_data, old_data):
     """
     Find what is new in new_data that cannot be found in old_data
@@ -800,6 +827,39 @@ def load_keywords_csv(filename: str):
         keywords.append(keyword[0])
 
     return keywords
+
+
+
+def find_keywords(anchor, keywords=['']):
+    """
+    Returns keywords found in an anchor
+    
+    """
+    rel_keywords = []
+    href, content = parse_anchor(anchor)
+    
+    for keyword in keywords:
+        kw = keyword.lower()
+        if kw in href.lower() or kw in content.lower():
+            rel_keywords.append(keyword)
+    
+    return rel_keywords
+
+
+def relevant_anchors(anchors, keywords=[''], ignorewords=['']):
+    rel_anchors=[]
+    rel_keywords=[]
+    
+    for anchor in anchors:
+        kws = find_keywords(anchor, keywords=keywords)
+        iws = find_keywords(anchor, keywords=ignorewords)
+        
+        if kws and not iws:
+            rel_anchors.append(anchor)
+            rel_keywords.append(kws)
+        
+    
+    return rel_anchors, rel_keywords
 
 
 def check_for_keywords(anchors, keywords, keywords_ignore=[""]):
@@ -1152,13 +1212,13 @@ def gen_next_time(intervals, start_time=[6, 0, 0], end_time=[23, 0, 0]):
     month = now.month
     day = now.day
 
-    starttime, endtime = mw.gen_start_end_times(
+    starttime, endtime = gen_start_end_times(
         start_time=start_time, end_time=end_time
     )
 
-    next_datetime = start_time
+    next_datetime = starttime
 
-    while next_datetime < end_time:
+    while next_datetime < endtime:
 
         if next_datetime < now:
             while next_datetime < now:

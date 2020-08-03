@@ -112,30 +112,18 @@ while True:
                         email_msg.append(message)
                         mw.write_log(message, url)
 
-
-                    if len(rel_anchors) > 0:
-                        email_organizations.append(org)
-                        email_msg.append(f'\n[{current_time}] {org} - {url}')
-                        email_msg.append('------------------------')
                         tmp_list = ', '.join(rel_kws)
                         message=f'Link marked because of keywords: {tmp_list}'
                         email_msg.append(message)
                         mw.write_log(message, url)
+                        email_msg.append('\n----\n')
 
-                        receive_addresses = mw.get_listserv(listserv_dir)
-                        email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
-                        email_msg.insert(0, f'Subject: Medwatch update from {org} [{mw.now_hms()}]\n\n')
-                        email_msg = u'\n'.join(email_msg).encode('utf-8')
-                        mw.send_email_notification(email_msg, receive_addresses, sendercreds_dir)
-
-                    else:
-                        message=f'[{current_time}] New links not related to {keywords}\n'
-                        mw.write_log(message,url)
-
-                        for diff_href, diff_content in zip(diff_hrefs, diff_contents):
-                            message = f'{diff_href}  ::  {diff_content}'
-                            mw.write_log(message, url)
-                        
+                    receive_addresses = mw.get_listserv(listserv_dir)
+                    email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
+                    email_msg.insert(0, f'Subject: Medwatch update from {org} [{mw.now_hms()}]\n\n')
+                    email_msg = u'\n'.join(email_msg).encode('utf-8')
+                    mw.send_email_notification(email_msg, receive_addresses, sendercreds_dir)
+                    
                 else:
                     message = f'[{current_time}] Update detected but no new anchors'
                     mw.write_log(message, url)
