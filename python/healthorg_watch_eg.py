@@ -7,21 +7,22 @@ import requests
 import yaml
 
 from datetime import datetime
+from datetime import timedelta
 
 import medwatch as mw 
 from bs4 import BeautifulSoup 
-import pandas as pd
 import pause
 
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+}
 
-# CSV generated from mw.create_company_df() 
-company_file = '../datasets/updated_company_list.csv' 
+log_dir = '../logs_gov/'
+keywords_dir = '../datasets/keywords_covid_gov.csv'
+listserv_dir = '../creds/medwatch_receivers.yaml'
 
-log_dir = '../logs/' # Path to save logs
-keywords_dir = '../datasets/keywords_covid.csv' # List of keywords
-
-listserv_dir = '../cfg_eg/email_examples.yaml' # List of emails to send notifications to
-sendercreds_dir = '../cfg_eg/sender_email_creds.yaml' # Credentials of sender's email
+EMAIL_USER = os.environ.get('EMAIL_USER')
+EMAIL_PW = os.environ.get('EMAIL_PW')
 
 while True:
     time_gen = mw.gen_next_time(120, start_time=[6,0,0], end_time=[23,0,0])
@@ -30,8 +31,7 @@ while True:
     gov_domains = ['https://fda.gov', 'https://who.int', 'https://hhs.gov']
     gov_urls = ['https://www.fda.gov/news-events/fda-newsroom/press-announcements', 'https://www.who.int/news-room/releases', 'https://www.hhs.gov/coronavirus/news/index.html']
     ignorewords = ['Daily Roundup']
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
-
+    
 
     now = datetime.now()
 
@@ -63,7 +63,7 @@ while True:
             print(f'[{mw.now_hms()}] Checking {org}')
 
             try:
-                r = requests.get(url, headers=headers)
+                r = requests.get(url, headers=HEADERS)
             except:
                 message = f'CONNECTION FAILED! - Status Code: {r.status_code}\n'
                 print(f'\n{message}')
@@ -122,7 +122,7 @@ while True:
                     email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
                     email_msg.insert(0, f'Subject: Medwatch update from {org} [{mw.now_hms()}]\n\n')
                     email_msg = u'\n'.join(email_msg).encode('utf-8')
-                    mw.send_email_notification(email_msg, receive_addresses, sendercreds_dir)
+                    mw.send_email_notification(email_msg, receive_addresses, EMAIL_USER, EMAIL_PW)
                     
                 else:
                     message = f'[{current_time}] Update detected but no new anchors'

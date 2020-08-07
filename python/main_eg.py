@@ -8,10 +8,10 @@ import yaml
 import csv
 
 from datetime import datetime
+from datetime import timedelta
 
-import medwatch as mw 
-from bs4 import BeautifulSoup 
-import pandas as pd
+import medwatch as mw
+from bs4 import BeautifulSoup
 import pause
 
 # For requests.get()
@@ -19,24 +19,31 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
 }
 
-# CSV generated from mw.create_company_df() 
-LIST_COMPANIES = '../datasets/updated_company_list.csv' 
-DIR_LOG = '../logs/' # Path to save logs
-DIR_KEYWORDS = '../datasets/keywords_covid.csv' # List of keywords
-DIR_LISTSERV = '../cfg_eg/email_examples.yaml' # List of emails to send notifications to
-DIR_SENDCREDS = '../cfg_eg/sender_email_creds.yaml' # Credentials of sender's email
+LIST_COMPANIES = "../datasets/updated_company_list.csv"
+DIR_LOG = "../logs/"
+DIR_KEYWORDS = "../datasets/keywords_covid.csv"
+DIR_LISTSERV = "../creds/medwatch_receivers.yaml"
 
+EMAIL_USER = os.environ.get('EMAIL_USER')
+EMAIL_PW = os.environ.get('EMAIL_PW')
+
+START_HMS = [6, 0, 0] # Start time of daily sweep (local time)
+END_HMS = [23, 0, 0] # End time of daily sweep (local time)
+PING_INTERVAL = 120 # How often to check for updates (in seconds)
 
 while True:
-    start_hms = [6, 0, 0]
-    end_hms = [23, 0, 0]
+    # Create a generator to determine when the next time to check is
+    time_gen = mw.gen_next_time(
+        PING_INTERVAL, start_time=START_HMS, end_time=END_HMS
+        )
 
-    time_gen = mw.gen_next_time(120, start_time=start_hms, end_time=end_hms)
-
-    starttime, endtime = mw.gen_start_end_times(start_time=start_hms, end_time=end_hms)
+    starttime, endtime = mw.gen_start_end_times(
+        start_time=start_hms, end_time=end_hms
+        )
 
     now = datetime.now()
 
+    # If not time to start, wait until start time
     if now < starttime:
         print(f"Will start at {starttime} EST")
         pause.until(starttime)
@@ -44,14 +51,12 @@ while True:
     now = datetime.now()
     print(f"Beginning {now}")
 
+    # Run main loop
     while now < endtime:
         # Pause until next time cycle
         time_check = next(time_gen)
         if datetime.now() < time_check:
             pause.until(time_check)
-
-        df = pd.read_csv(LIST_COMPANIES)
-        df = df.drop_duplicates()
 
         # Keywords loaded each time in case new ones added
         keywords = mw.load_keywords_csv(DIR_KEYWORDS)
@@ -70,18 +75,19 @@ while True:
                 url_home = url_home.strip()
                 url_pr = url_pr.strip()
 
+                timestamp = datetime.now()
+                timestamp = timestamp.strftime('%a, %d %b %Y %H:%M:%S')
+                   
                 # Skip if entry is n/a for some reason
                 if mw.is_na(url_pr):
                     print("\n----------------------------------")
-                    timestamp = datetime.now()
-                    timestamp = timestamp.strftime('%a, %d %b %Y %H:%M:%S')
                     print(f"[{timestamp}] Skipping {co}")
                     print("----------------------------------\n")
                     continue
 
                 # Otherwise, proceed
                 print("\n----------------------------------")
-                print(f"Checking {yco}")
+                print(f"[{timestamp}] Checking {yco}")
 
                 try:
                     r = requests.get(url_pr, headers=HEADERS)
@@ -151,10 +157,10 @@ while True:
                         email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
                         email_msg.insert(0, f'Subject: Medwatch update from {org} [{mw.now_hms()}]\n\n')
                         email_msg = u'\n'.join(email_msg).encode('utf-8')
-                        mw.send_email_notification(email_msg, receive_addresses, DIR_SENDCREDS)
+                        mw.send_email_notification(email_msg, receive_addresses, EMAIL_USER, EMAIL_PW)
                         
                     else:
-                        message = f'[{current_time}] Update detected but no new anchors'
+                        message = f'[{current_time}] Update detected but no new anchors\n'
                         mw.write_log(message, url_pr)
                         
                         

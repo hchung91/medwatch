@@ -648,6 +648,9 @@ def cache_updated(base_url, data, path="logs/"):
     filename = f"{path}CACHE-{url_filename}.html"
     cache_exists = os.path.isfile(filename)
 
+    timestamp = datetime.now()
+    timestamp = timestamp.strftime('%a, %d %b %Y %H:%M:%S')
+                   
     # Yes: Compare new html data to cached html data
     if cache_exists:
         # Opens cached html page
@@ -668,18 +671,18 @@ def cache_updated(base_url, data, path="logs/"):
 
         # If cached and new data match, no updates detected, otherwise yes
         if body_cache == body_data:
-            message = f"[{now_hms()}] No update from {base_url} \n"
+            message = f"[{timestamp}] No update from {base_url} \n"
             write_log(message, base_url, path=path)
             return False
         else:
-            message = f"[{now_hms()}] Update detected from {base_url} \n"
+            message = f"[{timestamp}] Update detected from {base_url} \n"
             write_log(message, base_url, path=path)
             return True
 
     # No: Create cache of html data
     else:
-        message1 = f"[{now_hms()}] No cached webpage found for {base_url} \n"
-        message2 = f"[{now_hms()}] Initializing page in {filename} \n"
+        message1 = f"[{timestamp}] No cached webpage found for {base_url} \n"
+        message2 = f"[{timestamp}] Initializing page in {filename} \n"
         write_log(f"{message1}{message2}", base_url, path=path)
         store_cache(base_url, data, path=path)
         return False
@@ -931,7 +934,7 @@ def check_for_keywords(anchors, keywords, keywords_ignore=[""]):
     return rel_anchors, rel_keywords_all
 
 
-def send_email_notification(message, receive_addresses, sender_creds):
+def send_email_notification(message, receive_addresses, sender_address, password):
     """
     Send an email to a list of recipients and log 
     For now, the send address must be a gmail account
@@ -940,14 +943,14 @@ def send_email_notification(message, receive_addresses, sender_creds):
     -------------
     message - String or possibly html content
     receive_addresses: list of str - email addresses of recipients
-    send_creds: str - filename of sender credentials
+    username: str - full email address of sender
+    password: str - password of sender email
 
     Returns:
     -------------
     n/a
     """
 
-    sender_address, password = get_creds(sender_creds)
     port = 465
     smtp_server = "smtp.gmail.com"
 
