@@ -849,7 +849,7 @@ def find_keywords(anchor, keywords=['']):
     return rel_keywords
 
 
-def relevant_anchors(anchors, keywords=[''], ignorewords=['']):
+def relevant_anchors(anchors, keywords=[], ignorewords=[]):
     rel_anchors=[]
     rel_keywords=[]
     
@@ -990,26 +990,31 @@ def href_to_link(href, domains=[""]):
 
     href = href.strip()
 
+
     if domains[0] != "":
         domains.insert(0, "")
 
     for domain in domains:
         temp_url = merge_link(domain, href)
-        temp_url = add_protocol(temp_url)
+        print(temp_url)
+        #temp_url = add_protocol(temp_url)
 
-        if not "." in temp_url:
-            continue
+        # if not "." in temp_url:
+        #     continue
 
         try:
             r = requests.head(temp_url, headers=headers)
+            print(r.status_code)
             if r.status_code == 200:
                 return temp_url
         except:
             print(f"{temp_url} failed")
+            pass
 
         try:
             print(switch_protocol(temp_url))
-            r = requests.get(switch_protocol(temp_url), headers=headers)
+            r = requests.head(switch_protocol(temp_url), headers=headers)
+            print(r.status_code)
             if r.status_code == 200:
                 return switch_protocol(temp_url)
         except:

@@ -38,7 +38,7 @@ while True:
         )
 
     starttime, endtime = mw.gen_start_end_times(
-        start_time=start_hms, end_time=end_hms
+        start_time=START_HMS, end_time=END_HMS
         )
 
     now = datetime.now()
@@ -143,7 +143,7 @@ while True:
 
                         for rel_anchor, rel_kws in zip(rel_anchors, rel_keywords):
                             rel_href, rel_content = mw.parse_anchor(rel_anchor)
-                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, domain])}'
+                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, url_home])}'
                             email_msg.append(message)
                             mw.write_log(message, url_pr)
 
@@ -155,7 +155,7 @@ while True:
 
                         receive_addresses = mw.get_listserv(DIR_LISTSERV)
                         email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
-                        email_msg.insert(0, f'Subject: Medwatch update from {org} [{mw.now_hms()}]\n\n')
+                        email_msg.insert(0, f'Subject: Medwatch update from {yco} [{mw.now_hms()}]\n\n')
                         email_msg = u'\n'.join(email_msg).encode('utf-8')
                         mw.send_email_notification(email_msg, receive_addresses, EMAIL_USER, EMAIL_PW)
                         
