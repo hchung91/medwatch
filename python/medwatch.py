@@ -13,6 +13,7 @@ import smtplib
 import ssl
 import pickle
 from datetime import datetime, timedelta
+from urllib.parse import urlparse
 
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -990,6 +991,13 @@ def href_to_link(href, domains=[""]):
 
     href = href.strip()
 
+    # Some "domains" given might not actually be the root, this looks to add them
+    for domain in domains:
+        uri_parsed = urlparse(domain)
+        tmp_domain = '{uri.scheme}://{uri.netloc}/'.format(uri=uri_parsed)
+
+        if merge_link(domain, '/') != merge_link(tmp_domain, '/'):
+            domains.append(tmp_domain)
 
     if domains[0] != "":
         domains.insert(0, "")
