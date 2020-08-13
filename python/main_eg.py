@@ -90,6 +90,8 @@ while True:
                 print(f"[{timestamp}] Checking {yco}")
 
                 try:
+                    time_requested = datetime.now()
+                    time_requested = time_requested.strftime('%a, %d %b %Y %H:%M:%S')
                     r = requests.get(url_pr, headers=HEADERS)
                 except:
                     message = f"CONNECTION FAILED! - Status Code: {r.status_code}\n"
@@ -108,10 +110,7 @@ while True:
                     continue
 
                 # Check if page is different from cached page
-                has_update = mw.cache_updated(url_pr, page)
-                current_time = datetime.now()
-                current_time = current_time.strftime('%a, %d %b %Y %H:%M:%S')
-                    
+                has_update = mw.cache_updated(url_pr, page)                    
 
                 # print(has_update)
                 print("\n")
@@ -132,35 +131,18 @@ while True:
                     rel_anchors, rel_keywords = mw.relevant_anchors(diff_anchors, keywords=keywords)
 
                     if len(rel_anchors) > 0:
-                        email_msg = []
-
-                        message = f'[{current_time}] New links found: \n---------------\n'
+                        message = f'[{time_requested}] New links found: \n---------------\n'
                         mw.write_log(message, url_pr)
                         mw.write_log(str(rel_anchors), url_pr)
 
-                        email_msg.append(f'\n[{current_time}] {yco} - {url_home}')
-                        email_msg.append('------------------------')
-
-                        for rel_anchor, rel_kws in zip(rel_anchors, rel_keywords):
-                            rel_href, rel_content = mw.parse_anchor(rel_anchor)
-                            message=f'{rel_content} :: {mw.href_to_link(rel_href, [url_pr, url_home])}'
-                            email_msg.append(message)
-                            mw.write_log(message, url_pr)
-
-                            tmp_list = ', '.join(rel_kws)
-                            message=f'Link marked because of keywords: {tmp_list}'
-                            email_msg.append(message)
-                            mw.write_log(message, url_pr)
-                            email_msg.append('\n----\n')
-
+                        email_body = mw.anchors_to_message(rel_anchors, rel_keywords, url_pr, url_home)
+                        email_msg = mw.compose_email(email_body, yco, url_home, url_pr, time_requested=time_requested, keywords=keywords)
+                        
                         receive_addresses = mw.get_listserv(DIR_LISTSERV)
-                        email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
-                        email_msg.insert(0, f'Subject: Medwatch update from {yco} [{mw.now_hms()}]\n\n')
-                        email_msg = u'\n'.join(email_msg).encode('utf-8')
                         mw.send_email_notification(email_msg, receive_addresses, EMAIL_USER, EMAIL_PW)
                         
                     else:
-                        message = f'[{current_time}] Update detected but no new anchors\n'
+                        message = f'[{time_requested}] Update detected but no new anchors\n'
                         mw.write_log(message, url_pr)
                         
                         

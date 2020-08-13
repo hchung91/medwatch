@@ -549,3 +549,51 @@ def switch_protocol(url):
 
     return url
 
+
+def compose_email(message_body, organization, domain, target_url, time_requested='', keywords=''):
+    if time_requested == '':
+        time_requested = datetime.now()
+        time_requested = time_requested.strftime('%a, %d %b %Y %H:%M:%S')
+
+    email_msg = []
+
+    email_msg.append(f'\n[{time_requested}] {organization} - {domain}')
+    email_msg.append('------------------------')
+
+    email_msg.append(message_body)    
+
+    email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
+    email_msg.insert(0, f'Subject: Medwatch update from {organization} [{time_requested}]\n\n')
+
+    
+    email_msg = u'\n'.join(email_msg).encode('utf-8')
+
+    return email_msg
+
+
+def anchors_to_message(anchors, keywords, target_url, home_url='', other_urls=[]):   
+    msg =[]
+
+    urls_all = []
+    urls_all.append(target_url)
+    
+    if home_url != '':
+        urls_all.append(home_url)
+    else:
+        home_url = target_url
+
+    url_all.extend(other_urls)
+
+    for anchor, kws in zip(anchors, keywords):
+        href, content = parse_anchor(anchor)
+        message=f'{content} :: {href_to_link(href, urls_all)}'
+        msg.append(message)
+        write_log(message, target_url)
+
+        kw_list = ', '.join(kws)
+        message=f'Link marked because of keywords: {kw_list}'
+        msg.append(message)
+        write_log(message, target_url)
+        msg.append('\n----\n')    
+
+    return msg                 
