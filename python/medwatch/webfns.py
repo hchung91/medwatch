@@ -550,7 +550,24 @@ def switch_protocol(url):
     return url
 
 
-def compose_email(message_body, organization, domain, target_url, time_requested='', keywords=''):
+def compose_email(message_body, organization, domain, target_url, time_requested='', keywords=[]):
+    """
+    Composes full email message by adding subjects and headers
+    
+    Parameters:
+    -------------
+    message_body: str - full email message sans subject and headers
+    organization: str - name of organization
+    domain: str - domain (home page) of the organization being followed
+    target_url: str - exact url of the page that was being monitored
+    time_requested: formatted datetime - time the webpage was pulled
+    keywords: list of str - all keywords in the feed for the target url
+
+    Returns:
+    -------------
+    email_msg: str - full email message as a string
+    """
+
     if time_requested == '':
         time_requested = datetime.now()
         time_requested = time_requested.strftime('%a, %d %b %Y %H:%M:%S')
@@ -562,16 +579,36 @@ def compose_email(message_body, organization, domain, target_url, time_requested
 
     email_msg.append(message_body)    
 
-    email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
-    email_msg.insert(0, f'Subject: Medwatch update from {organization} [{time_requested}]\n\n')
+    if keywords != []:
+        email_msg.insert(0, f'New links related to the following keywords have been detected! \n{keywords}\n')
+    else:
+        email_msg.insert(0, f'New links related to keywords of interest found!')
 
-    
+    email_msg.insert(0, f'Subject: Medwatch update from {organization} [{time_requested}]\n\n')
+  
     email_msg = u'\n'.join(email_msg).encode('utf-8')
 
     return email_msg
 
 
 def anchors_to_message(anchors, keywords, target_url, home_url='', other_urls=[]):   
+    """
+    Composes body of the email from a list of relevant anchors
+
+    Parameters:
+    -------------
+    anchors: list of bs4 objects - list of anchors to be included in the message
+    keywords: list of list of str - list of lists of same length as anchors. each list
+        has a list of keywords associated with each anchor.
+    target_url: str - exact url of the page that was being monitored
+    home_url: str - domain (home page) of the organization being followed
+    other_urls: list of str - other URLs to check against for href_to_link
+
+    Returns:
+    -------------
+    msg: str - email message body
+    """
+
     msg =[]
 
     urls_all = []
