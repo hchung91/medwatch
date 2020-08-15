@@ -10,8 +10,11 @@ import hashlib
 import smtplib
 import ssl
 import pickle
+import pytz
 
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
+from tzlocal import get_localzone
 
 
 # MONITORING WEBPAGES
@@ -126,6 +129,76 @@ def store_anchors(base_url, anchors, path="logs/"):
 
     with open(filename, "wb") as fp:
         pickle.dump(all_anchors, fp)
+
+
+def datetime_header_format(_datetime):
+    """
+    Takes a datetime object and converts it to string format that
+    can be interpretted by request headers
+
+    Parameters:
+    -------------
+    _datetime: datetime object - given in any timezone
+
+    Returns:
+    -------------
+    _datetime: str - formatted string in GMT
+    """
+
+    _datetime = _datetime.astimezone(pytz.timezone('GMT'))
+    _datetime = _datetime.strftime('%a, %d %b %Y %H:%M:%S GMT')
+    return _datetime
+    
+
+def localize_tz(_datetime):
+    """
+    Takes a datetime object and converts it to the local timezone
+
+    Parameters:
+    -------------
+    _datetime: datetime object - given in any timezone
+
+    Returns:
+    -------------
+    _datetime: datetime object - given in local timezone
+
+    """
+
+    local_tz = str(get_localzone())
+    _datetime = _datetime.astimezone(pytz.timezone(local_tz))
+    
+    return _datetime
+
+
+def url_updated(url, since_datetime):
+    """
+    Checks if a url has been updated since a certain datetime using the
+    If-Modified-Since header
+
+    Parameters:
+    -------------
+    url: str - url being monitored
+    since_datetime: datetime object - check if changes have been made since this
+        datetime (must be in UTC/GMT)
+
+    Returns:
+    -------------
+    True or False - True if changes found, otherwise False
+    """
+
+    headers = {"If-Modified-Since": t, "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"}
+    since_datetime = datetime_header_format(since_datetime)
+    r = requests.header(url, headers=headers)
+
+    status_code = r.status_code
+
+    if status_code == 200:
+        return True
+    elif status_code == 204:
+        return False
+    else:
+        print(f"Update not detected with status code {status_code}")
+        return False
 
 
 def cache_updated(base_url, data, path="logs/"):
