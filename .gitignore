@@ -4,3 +4,5 @@ medwatch_notes/Notes
 
 # Temp files
 *checkpoint.ipynb
+
+*__pycache__*
