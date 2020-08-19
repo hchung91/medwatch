@@ -14,7 +14,7 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = 'user'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String(50))
 
     def __repr__(self):
@@ -25,7 +25,7 @@ class User(Base):
 class Company(Base):
     __tablename__ = 'company'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
     domain_url = Column(String(100))
     url = Column(String(500))
@@ -38,7 +38,7 @@ class Company(Base):
 class Subscription(Base):
     __tablename__ = 'subscription'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     company_id = Column(Integer, ForeignKey('company.id'))
     user_id = Column(Integer, ForeignKey('user.id'))
 
@@ -50,7 +50,7 @@ class Subscription(Base):
 class Link(Base):
     __tablename__ = 'link'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     company_id = Column(Integer, ForeignKey('company.id'))
     body = Column(String(200), nullable=False)
     href = Column(String(200), nullable=False)
@@ -65,7 +65,7 @@ class Link(Base):
 class Content(Base):
     __tablename__ = 'content'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     link_id = Column(Integer, ForeignKey('link.id'))
     relevant = Column(Boolean, default=False)
@@ -80,7 +80,7 @@ class Content(Base):
 class Keyword(Base):
     __tablename__ = 'keyword'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     company_id = Column(Integer, ForeignKey('company.id'))
     user_id = Column(Integer, ForeignKey('user.id'))
     keyword = Column(String(50), nullable=False)
