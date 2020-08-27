@@ -4,7 +4,7 @@ from sqlalchemy import Column, Integer, String, Boolean, Date, ForeignKey
 
 # Define the Postgres engine using Postgres Connector/Python
 engine = sqlalchemy.create_engine(
-    'postgres://root:password@127.0.0.1:3306/db',
+    'postgres://root:password@127.0.0.1:5432/db',
     echo=True)
 
 # Define and create the table
