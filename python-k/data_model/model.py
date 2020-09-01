@@ -4,7 +4,7 @@ from sqlalchemy import Column, Integer, String, Boolean, Date, ForeignKey
 
 # Define the MySQL engine using MySQL Connector/Python
 engine = sqlalchemy.create_engine(
-    'mysql://root:password@127.0.0.1:3306/db',
+    'postgresql://user:password@127.0.0.1:5432/db',
     echo=True)
 
 # Define and create the table
